@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+body {
+	background-color: #BBCED4;
+}
+#Layer1 {
+	position:absolute;
+	width:900px;
+	height:115px;
+	z-index:1;
+	overflow: hidden;
+	top: 551px;
+	left: 100px;
+}
+#Layer3 {
+	position:absolute;
+	width:901px;
+	height:445px;
+	z-index:1;
+	left: -1px;
+	top: -430px;
+}
+.STYLE1 {
+	font-size: 16px;
+	font-weight: bold;
+}
+.STYLE2 {font-size: 36px}
+-->
+</style><script type="text/JavaScript">
+<!--
+function MM_timelinePlay(tmLnName, myID) { //v1.2
+  //Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,propNum,theObj,firstTime=false;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (myID == null) { myID = ++tmLn.ID; firstTime=true;}//if new call, incr ID
+  if (myID == tmLn.ID) { //if Im newest
+    setTimeout('MM_timelinePlay("'+tmLnName+'",'+myID+')',tmLn.delay);
+    fNew = ++tmLn.curFrame;
+    for (i=0; i<tmLn.length; i++) {
+      sprite = tmLn[i];
+      if (sprite.charAt(0) == 's') {
+        if (sprite.obj) {
+          numKeyFr = sprite.keyFrames.length; firstKeyFr = sprite.keyFrames[0];
+          if (fNew >= firstKeyFr && fNew <= sprite.keyFrames[numKeyFr-1]) {//in range
+            keyFrm=1;
+            for (j=0; j<sprite.values.length; j++) {
+              props = sprite.values[j]; 
+              if (numKeyFr != props.length) {
+                if (props.prop2 == null) sprite.obj[props.prop] = props[fNew-firstKeyFr];
+                else        sprite.obj[props.prop2][props.prop] = props[fNew-firstKeyFr];
+              } else {
+                while (keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]) keyFrm++;
+                if (firstTime || fNew==sprite.keyFrames[keyFrm-1]) {
+                  if (props.prop2 == null) sprite.obj[props.prop] = props[keyFrm-1];
+                  else        sprite.obj[props.prop2][props.prop] = props[keyFrm-1];
+        } } } } }
+      } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+      if (fNew > tmLn.lastFrame) tmLn.ID = 0;
+  } }
+}
+
+function MM_timelineGoto(tmLnName, fNew, numGotos) { //v2.0
+  //Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004 Macromedia, Inc. All rights reserved.
+  var i,j,tmLn,props,keyFrm,sprite,numKeyFr,firstKeyFr,lastKeyFr,propNum,theObj;
+  if (document.MM_Time == null) MM_initTimelines(); //if *very* 1st time
+  tmLn = document.MM_Time[tmLnName];
+  if (numGotos != null)
+    if (tmLn.gotoCount == null) tmLn.gotoCount = 1;
+    else if (tmLn.gotoCount++ >= numGotos) {tmLn.gotoCount=0; return}
+  jmpFwd = (fNew > tmLn.curFrame);
+  for (i = 0; i < tmLn.length; i++) {
+    sprite = (jmpFwd)? tmLn[i] : tmLn[(tmLn.length-1)-i]; //count bkwds if jumping back
+    if (sprite.charAt(0) == "s") {
+      numKeyFr = sprite.keyFrames.length;
+      firstKeyFr = sprite.keyFrames[0];
+      lastKeyFr = sprite.keyFrames[numKeyFr - 1];
+      if ((jmpFwd && fNew<firstKeyFr) || (!jmpFwd && lastKeyFr<fNew)) continue; //skip if untouchd
+      for (keyFrm=1; keyFrm<numKeyFr && fNew>=sprite.keyFrames[keyFrm]; keyFrm++);
+      for (j=0; j<sprite.values.length; j++) {
+        props = sprite.values[j];
+        if (numKeyFr == props.length) propNum = keyFrm-1 //keyframes only
+        else propNum = Math.min(Math.max(0,fNew-firstKeyFr),props.length-1); //or keep in legal range
+        if (sprite.obj != null) {
+          if (props.prop2 == null) sprite.obj[props.prop] = props[propNum];
+          else        sprite.obj[props.prop2][props.prop] = props[propNum];
+      } }
+    } else if (sprite.charAt(0)=='b' && fNew == sprite.frame) eval(sprite.value);
+  }
+  tmLn.curFrame = fNew;
+  if (tmLn.ID == 0) eval('MM_timelinePlay(tmLnName)');
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_nbGroup(event, grpName) { //v6.0
+  var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])? args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) {
+      img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr)
+      for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_initTimelines() { //v4.0
+    //MM_initTimelines() Copyright 1997 Macromedia, Inc. All rights reserved.
+    var ns = navigator.appName == "Netscape";
+    var ns4 = (ns && parseInt(navigator.appVersion) == 4);
+    var ns5 = (ns && parseInt(navigator.appVersion) > 4);
+    var macIE5 = (navigator.platform ? (navigator.platform == "MacPPC") : false) && (navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4);
+    document.MM_Time = new Array(1);
+    document.MM_Time[0] = new Array(2);
+    document.MM_Time["Timeline1"] = document.MM_Time[0];
+    document.MM_Time[0].MM_Name = "Timeline1";
+    document.MM_Time[0].fps = 8;
+    document.MM_Time[0][0] = new String("sprite");
+    document.MM_Time[0][0].slot = 1;
+    if (ns4)
+        document.MM_Time[0][0].obj = document["Layer1"] ? document["Layer1"].document["Layer3"] : document["Layer3"];
+    else if (ns5)
+        document.MM_Time[0][0].obj = document.getElementById("Layer3");
+    else
+        document.MM_Time[0][0].obj = document.all ? document.all["Layer3"] : null;
+    document.MM_Time[0][0].keyFrames = new Array(2, 121, 122);
+    document.MM_Time[0][0].values = new Array(2);
+    if (ns5 || macIE5)
+        document.MM_Time[0][0].values[0] = new Array("0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px", "0px");
+    else
+        document.MM_Time[0][0].values[0] = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+    document.MM_Time[0][0].values[0].prop = "left";
+    if (ns5 || macIE5)
+        document.MM_Time[0][0].values[1] = new Array("117px", "112px", "107px", "101px", "96px", "91px", "86px", "81px", "75px", "70px", "65px", "60px", "55px", "49px", "44px", "39px", "34px", "29px", "23px", "18px", "13px", "8px", "3px", "-3px", "-8px", "-13px", "-18px", "-23px", "-29px", "-34px", "-39px", "-44px", "-49px", "-55px", "-60px", "-65px", "-70px", "-75px", "-81px", "-86px", "-91px", "-96px", "-101px", "-107px", "-112px", "-117px", "-122px", "-127px", "-133px", "-138px", "-143px", "-148px", "-153px", "-159px", "-164px", "-169px", "-174px", "-179px", "-185px", "-190px", "-195px", "-200px", "-206px", "-211px", "-216px", "-221px", "-226px", "-232px", "-237px", "-242px", "-247px", "-252px", "-258px", "-263px", "-268px", "-273px", "-278px", "-284px", "-289px", "-294px", "-299px", "-304px", "-310px", "-315px", "-320px", "-325px", "-330px", "-336px", "-341px", "-346px", "-351px", "-356px", "-362px", "-367px", "-372px", "-377px", "-382px", "-388px", "-393px", "-398px", "-403px", "-408px", "-414px", "-419px", "-424px", "-429px", "-434px", "-440px", "-445px", "-450px", "-455px", "-460px", "-466px", "-471px", "-476px", "-481px", "-486px", "-492px", "-497px", "-502px", "117px");
+    else
+        document.MM_Time[0][0].values[1] = new Array(117,112,107,101,96,91,86,81,75,70,65,60,55,49,44,39,34,29,23,18,13,8,3,-3,-8,-13,-18,-23,-29,-34,-39,-44,-49,-55,-60,-65,-70,-75,-81,-86,-91,-96,-101,-107,-112,-117,-122,-127,-133,-138,-143,-148,-153,-159,-164,-169,-174,-179,-185,-190,-195,-200,-206,-211,-216,-221,-226,-232,-237,-242,-247,-252,-258,-263,-268,-273,-278,-284,-289,-294,-299,-304,-310,-315,-320,-325,-330,-336,-341,-346,-351,-356,-362,-367,-372,-377,-382,-388,-393,-398,-403,-408,-414,-419,-424,-429,-434,-440,-445,-450,-455,-460,-466,-471,-476,-481,-486,-492,-497,-502,117);
+    document.MM_Time[0][0].values[1].prop = "top";
+    if (!ns4) {
+        document.MM_Time[0][0].values[0].prop2 = "style";
+        document.MM_Time[0][0].values[1].prop2 = "style";
+    }
+    document.MM_Time[0][1] = new String("behavior");
+    document.MM_Time[0][1].frame = 123;
+    document.MM_Time[0][1].value = "MM_timelineGoto('Timeline1','1')";
+    document.MM_Time[0].lastFrame = 123;
+    for (i=0; i<document.MM_Time.length; i++) {
+        document.MM_Time[i].ID = null;
+        document.MM_Time[i].curFrame = 0;
+        document.MM_Time[i].delay = 1000/document.MM_Time[i].fps;
+    }
+}
+//-->
+</script></head>
+
+<body onload="MM_timelinePlay('Timeline1');MM_preloadImages('RES/button_youxijianjie_down.jpg','RES/button_youxijianjie_over.jpg','RES/button-chuanzhijieshao_down.jpg','RES/button-chuanzhijieshao_over.jpg','RES/youxijianjie_down.jpg','RES/youxijianjie_over.jpg','RES/chuanzhijieshao_down.jpg','RES/chuanzhijieshao_over.jpg','RES/jingmeijietu_down.jpg','RES/jingmeijietu_over.jpg','RES/haiyoulianmeng_down.jpg','RES/haiyoulianmeng_over.jpg','RES/gaoshougonglue_down.jpg','RES/gaoshougonglue_over.jpg')">
+<bgsound src="RES/Yanni-voyage.mp3" loop = -1/>
+<table width="900" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><div align="center"><img src="RES/logo.jpg" alt="点击返回主页" width="224" height="188" /></div></td>
+  </tr>
+  <tr>
+    <td><img src="RES/banner.jpg" width="900" height="340" /></td>
+  </tr>
+  <tr>
+    <td><div id="Layer1">
+      <div id="Layer2"></div>
+      <div class="STYLE1" id="Layer3" style="top: 117px; left: 0px;">
+        <div align="center" class="STYLE2">在这片宽阔的海域<br />
+          等待您的加入<br />
+          这里有激烈的对决<br />
+          犀利的操作<br />
+          您可以利用武器的优势<br />
+          也可以用不寻常的策略<br />
+          您可以多武器的搭配<br />
+          也可利用大型船只的本身优势<br />
+          在这里您可以进行公正的对决<br />
+          也可享受激战后的安逸<br />
+          相信你在海战里能找到属于自己的激情<br />
+          记住 你不是一个人在战斗<br />
+          官方网址：boom.uuu9.com</div>
+      </div>
+    </div></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<table width="900" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><a href="youxijianjie.html" target="_top" onclick="MM_nbGroup('down','group1','youxijianjie','RES/youxijianjie_down.jpg',1)" onmouseover="MM_nbGroup('over','youxijianjie','RES/youxijianjie_over.jpg','',1)" onmouseout="MM_nbGroup('out')"><img src="RES/youxijianjie.jpg" alt="" name="youxijianjie" width="126" height="41" border="0" id="youxijianjie" onload="" /></a></td>
+    <td><a href="chuanzhijieshao.html" target="_top" onclick="MM_nbGroup('down','group1','chuanzhijieshao','RES/chuanzhijieshao_down.jpg',1)" onmouseover="MM_nbGroup('over','chuanzhijieshao','RES/chuanzhijieshao_over.jpg','',1)" onmouseout="MM_nbGroup('out')"><img src="RES/chuanzhijieshao.jpg" alt="" name="chuanzhijieshao" width="125" height="41" border="0" id="chuanzhijieshao" onload="" /></a></td>
+    <td><a href="jingmeijietu.html" target="_top" onclick="MM_nbGroup('down','group1','jingmeijietu','RES/jingmeijietu_down.jpg',1)" onmouseover="MM_nbGroup('over','jingmeijietu','RES/jingmeijietu_over.jpg','',1)" onmouseout="MM_nbGroup('out')"><img src="RES/jingmeijietu.jpg" alt="" name="jingmeijietu" width="125" height="41" border="0" id="jingmeijietu" onload="" /></a></td>
+    <td><a href="haiyoulianmeng.html" target="_top" onclick="MM_nbGroup('down','group1','haiyoulianmeng','RES/haiyoulianmeng_down.jpg',1)" onmouseover="MM_nbGroup('over','haiyoulianmeng','RES/haiyoulianmeng_over.jpg','',1)" onmouseout="MM_nbGroup('out')"><img src="RES/haiyoulianmeng.jpg" alt="" name="haiyoulianmeng" width="126" height="41" border="0" id="haiyoulianmeng" onload="" /></a></td>
+    <td><a href="gaoshougonglue.html" target="_top" onclick="MM_nbGroup('down','group1','gaoshougonglue','RES/gaoshougonglue_down.jpg',1)" onmouseover="MM_nbGroup('over','gaoshougonglue','RES/gaoshougonglue_over.jpg','',1)" onmouseout="MM_nbGroup('out')"><img src="RES/gaoshougonglue.jpg" alt="" name="gaoshougonglue" width="126" height="41" border="0" id="gaoshougonglue" onload="" /></a></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>

@@ -1,0 +1,236 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" >
+		<title>展示页面</title>
+		<style>
+			.divcss1{width: 960px; text-align: center; border: 2px solid #0000FF; margin: 0 auto; overflow:auto; }
+			.divcss2{width: 300px; text-align: center; border: 2px solid #00FF00; float: left; margin: 8px;}
+			.divcss3{width: 300px; text-align: center; border: 2px solid #FFFF00; float: left; margin: 8px;}
+			.divcss4{width: 300px; text-align: center; border: 2px solid #FF0000; float: left; margin: 8px;}
+			.divcss2 img:hover{-webkit-transform:scale(1.4); -webkit-transition: all 0.3s ease-in; box-shadow: 40px 40px 40px rgba(50, 50, 50, 0.4);}
+			.divcss3 img:hover{-webkit-transform:scale(1.4); -webkit-transition: all 0.3s ease-in; box-shadow: 40px 40px 40px rgba(50, 50, 50, 0.4);}
+			.divcss4 img:hover{-webkit-transform:scale(1.4); -webkit-transition: all 0.3s ease-in; box-shadow: 40px 40px 40px rgba(50, 50, 50, 0.4);}
+			.divcss5{width: 500px; background-color : #00FFCC; font-size: 23px; text-align: center}
+			.divcss6{width: 500px; background-color : #FF00CC; font-size: 23px; text-align: center}
+		</style>
+	</head>
+	<body>
+		<div id = "myhead">
+			<p align = "center">秀恩爱图片展示</p>
+		</div>
+		
+		<div id = "mybody" class = "divcss1" >
+			<div id = "list1" class = "divcss2">
+			</div>
+			
+			<div id = "list2" class = "divcss3">
+			</div>
+			
+			<div id = "list3" class = "divcss4">
+			</div>
+			
+			<p>图库里已经没有更多图片</p>
+		</div>
+		
+		
+		<div id="myfoot">
+			<hr width = "100%"></hr>
+			<p align = "center">下面没有了</p>
+		</div>
+		
+		<div id = "hidediv" style = "position : fixed; top: 0px; left: 0px; display: none">
+			<img id = "hidepic" src = "img/error.jpg" ></img>
+			<div id = "hidecommentdiv" style = "position:fixed; top:100px; left:800px; width = 200px; height = 200px">
+				<span style = "align: center; font-size: 30px; ">使用键盘上下键来给评论翻页</span>
+				<div id = "comment">
+					
+				</div>
+			</div>
+		</div>
+	<script src = "jquery-2.1.4.js"></script>
+	</body>
+</html>
+
+<script language = "javascript">
+var m_height = [0, 0, 0];
+var m_minheight = 0;
+var list_to_add = 1;
+var naturalheight = [800 ,269 ,535 ,498 ,357 ,483 ,643 ,768 ,415 ,407 ,480 ,500 ,594 ,635 ,397 ,590 ,439 ,514 ,355 ,591 ,768 ,618 ,533 ,563 ,737 ,220 ,566 ,250 ,811 ,457 ,576 ,811 ,699 ,576 ,790 ,768 ,543 ,1050 ,768 ,640 ,758 ,900 ,689 ,900 ,1600 ,800 ,1050 ,768 ,768 ,575 ,640 ,640 ,680 ,680 ,682 ,680 ,680 ,635 ,689 ,681 ,683 ,683 ,731 ,696 ,792 ,819 ,681 ,668 ,696 ,1200 ,672 ,220 ,640 ,819 ,683 ,690 ,640 ,682 ,768 ,1024 ,768 ,640 ,683 ,793 ,729 ,800 ,680 ,640 ,819 ,768 ,726 ,683 ,683 ,599 ,682 ,686 ,640 ,681 ,805 ,683];
+var naturalwidth = [800 ,500 ,800 ,640 ,511 ,650 ,1001 ,800 ,700 ,600 ,640 ,750 ,748 ,1200 ,600 ,1022 ,750 ,1024 ,550 ,960 ,1024 ,800 ,892 ,700 ,1024 ,680 ,700 ,501 ,1024 ,640 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,918 ,1680 ,1024 ,1024 ,1024 ,1440 ,1024 ,1440 ,2560 ,1280 ,1680 ,1360 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1920 ,1024 ,280 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,678 ,1024 ,1024 ,1024 ,1024 ,1005 ,1280 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024 ,1024];
+var numpic = 20;
+var clicked = false;
+var result;
+var data;
+var page = 0;
+var commentready = false;
+var mylatitude = 116;
+var mylongitude = 40;
+for (i = 1; i <= 20; i++){
+	add_pic(i);
+}
+getcomment();
+function add_pic(x){
+	var i;
+	m_minheight = 999999;
+	for (i = 0; i < 3; i++){
+		if (m_minheight > m_height[i]){
+			m_minheight = m_height[i];
+			list_to_add = i+1;
+		}
+	}
+	var a = document.getElementById("list" + list_to_add);
+	//a.innerHTML += ('<img id = "img'+ x + '" src="img/' + x + '.jpg"  width="300px" onerror = "this.src = 'img/error.jpg'"></img>');
+	var b = document.createElement("img");
+	b.id = "img" + x;
+	b.src = "img/" + x + ".jpg";
+	b.width = 300;
+	b.onerror = function(){
+		this.src = "img/error.jpg";
+	};
+	b.onclick = function(event){//鼠标点击到了某张图片，查看评论和大图
+		if (clicked == true)
+			return;
+		var c = document.getElementById("hidediv");
+		c.style.display = "block";
+		var a = c.firstChild.nextSibling;
+		//a.style.display = "block";
+		a.id = x+'';
+		a.src = this.src;
+		a.style.width = "800px";
+		a.style.height = "600px";
+		clicked = true;
+		var b = document.getElementById("mybody");
+		b.style.opacity = 0.2;
+		//加载评论
+		if (commentready == true){
+			d = document.getElementById("comment");
+			d.innerHTML = '<div>&nbsp</div><div class = "divcss5">'+result.comments[page].author + '  评论道：  ' +result.comments[page].content +'</div>';
+			var jing = -180 + 3.6 * x;
+			var wei = -90 + 1.8 * x;
+			d.innerHTML += '<div class = "divcss6">此图距离你'+ calculate(jing, wei, mylatitude, mylongitude) +'千米</div>';
+		}
+		event.stopPropagation();
+	}
+	b.style = "divcss5";
+	//b.style.-webkit-transition = "all 0.5s ease-in";
+	a.appendChild(b);
+	m_height[list_to_add - 1] += Math.round(naturalheight[x - 1]* 300 / naturalwidth[x - 1]);
+	//alert(m_height);
+}//增加编号为x的图片
+window.onclick = function(){
+	if (clicked == false)
+		return;
+	var a = document.getElementById("hidediv");
+	a.style.display = "none";
+	clicked = false;
+	var b = document.getElementById("mybody");
+	b.style.opacity = 1;
+	page = 0;
+}
+window.onscroll = function () {//当滑动条到最下方时，就继续加载新的图片
+    var m_winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+	var m_scrollheight = document.documentElement.scrollHeight||document.body.scrollHeight;
+	var m_windowheight = document.documentElement.clientHeight||document.body.clientHeight;
+    if (m_winScroll == (m_scrollheight - m_windowheight)) {
+		var i;
+		if (numpic == 100)
+			return;
+		else{
+			var k = m_winScroll;
+			for (i = numpic+1; i <= numpic+20; i++){
+				add_pic(i);
+			}
+			numpic += 20;
+			window.scrollTo(0, k - 200);
+		}
+    }
+}
+
+function createXHR(){
+	if (typeof XMLHttpRequest != "undefined"){
+		return new XMLHttpRequest();
+	} 
+	else {
+			throw new Error("No XHR object available.");
+		}
+}
+
+
+function getcomment(){//从json下载评论的数据
+	var xhr = createXHR();
+	xhr.onreadystatechange = function(event){
+	if (xhr.readyState == 4){
+		if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+			//alert(xhr.responseText);
+			data = xhr.responseText;
+			result = eval('('+ data +')');
+			commentready = true;
+		} 
+		else {
+			alert("Request was unsuccessful: " + xhr.status);
+		}
+	}
+	};
+	xhr.open("GET", 'http://zhangyitian13.github.io/new/test.json', true);
+	xhr.send(null);
+	//console.log(xhr.responseText);
+	//$.getJSON('http://zhangyitian13.github.io/new/test.json', data,  function(result){
+	
+//});
+}
+
+document.onkeydown=function(event){ 
+var e = event || window.event || arguments.callee.caller.arguments[0]; 
+if(e && e.keyCode==38){ // 按 ↑ 键
+	if (page == 0)
+		page = 0;
+	else 
+		page--;
+}
+if(e && e.keyCode==40){//按 ↓ 键
+	if (page == 2)
+		page = 2;
+	else page++;
+}
+if (commentready == true){
+	d = document.getElementById("comment");
+	d.innerHTML = '<div>&nbsp</div><div class = "divcss5">'+result.comments[page].author + '  评论道：  ' +result.comments[page].content +'</div>';
+	var x = document.getElementById("hidediv").firstChild.nextSibling.id;
+	//console.log(document.getElementById("hidediv").firstChild.nextSibling.id);
+	var jing = -180 + 3.6 * x;
+	var wei = -90 + 1.8 * x;
+	d.innerHTML += '<div class = "divcss6">此图距离你'+ calculate(jing, wei, mylatitude, mylongitude) +'千米</div>';
+}
+
+}
+var config = { enableHighAccuracy: true, timeout: 5000, maximumAge: 30000 }; 
+window.navigator.geolocation.getCurrentPosition(showPosition, showerr, config);
+function showPosition(position){
+	alert(position.coords.latitude);
+	alert(position.coords.longitude);
+	mylatitude = position.coords.latitude;
+	mylongitude = position.coords.longitude;
+}
+
+function showerr(error){
+	console.log(error);
+	alert("用户禁止了获取地理位置！！");
+}
+
+function calculate(a, b, c, d){//计算经度纬度为（a，b）(c,d)的距离M
+	var e, f, g, h;
+	a = a / 180 * Math.PI;
+	b = b / 180 * Math.PI;
+	c = c / 180 * Math.PI;
+	d = d / 180 * Math.PI;
+	e = Math.cos(a)*Math.cos(b);
+	f = Math.cos(c)*Math.cos(d);
+	g = Math.cos(b)*Math.sin(a);
+	h = Math.cos(d)*Math.sin(c);
+	i = Math.sin(b)*Math.sin(d);
+	//alert((Math.acos(e*f+g*h+i)));
+	return (Math.acos(e*f+g*h+i)) * 6371;
+}
+</script>
+

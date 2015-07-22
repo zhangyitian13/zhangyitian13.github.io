@@ -2,82 +2,289 @@
 <html>
 	<head>
 		<title>Battleships_demo</title>
+		<script type = "text/javascript" src = "js/smart.js" > </script>
+		<script type = "text/javascript" src = "js/refresh.js" > </script>
+		<script type = "text/javascript" src = "js/listener.js" > </script>
 	</head>
 	
 	<body>
 		<div id = "m_head" style = "text-align : center;">
 			Battleships!
 		</div>
-		<div id = "m_showwindow" style = "position:relative; background-image:url('images/background.jpg'); width : 600px; height: 400px; border: 1px solid; margin: 0 auto; cursor: url('images/select.png'), default; overflow : hidden;" onclick = "select_ship()">
+		<div id = "m_showwindow" style = "position:relative; background-image:url('images/bg.gif'); width : 600px; height: 400px; border: 1px solid; margin: 0 auto; cursor: url('images/select.png'), default; overflow : hidden;" onclick = "select_ship()">
+			
+			<div id = "m_gameover" style = "display: none">
+				<img src = "images/gameover.png"></img>
+				<img src = "images/tryagain.png" style = "position:relative; top: -100px; left:310px;" onclick = "startgame()"></img>
+			</div>
+			
+			<div id = "m_start" style = "display: block">
+				<img src = "images/letsgo.png" style = "margin: 130px;" onclick = "startgame()"></img>
+				<img src = "images/tip.png" style = "position:relative; top:-50px; left: 80px;"></img>
+			</div>
+			
+			<div id = "m_victory" style = "display: none">
+				<img src = "images/nextstage.png" style = "margin: 130px;" onclick = "startgame()"></img>
+			</div>
+			
 			<div id = "selectcircle" style = "position: absolute; top: 0px; left: 0px; display: none">
 				<img id = "selectcircle_pic" src = "images/selectship.png"></img>
 			</div>			
-			<div id = "m_ship0" style = "position: absolute; top: 0px; left: 0px; overflow: hidden;">
-				<img id = "shippic0" src = "images/ship_23.png" style = "cursor: url('images/sword.png'), default;" onclick = "selectship0()"></img>
+			<div id = "m_ship0" style = "position: absolute; overflow: hidden;">
+				<img id = "shippic0"  style = "cursor: url('images/sword.png'), default;" onmouseup = "selectship0(event)"></img>
 			</div>
-			<div id = "m_ship1" style = "position: absolute; top: 0px; left: 150px;">
-				<img id = "shippic1" src = "images/ship_19.png" style = "cursor: url('images/sword.png'), default;" onclick = "selectship1()"></img>
+			<div id = "m_ship1" style = "position: absolute; overflow: hidden;">
+				<img id = "shippic1"  style = "cursor: url('images/sword.png'), default;" onmouseup = "selectship1(event)"></img>
 			</div>
-			
-			<div id = "bullet_shadow0" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/shadow.png"></img>
+			<div id = "m_ship2" style = "position: absolute; overflow: hidden;">
+				<img id = "shippic2"  style = "cursor: url('images/sword.png'), default;" onmouseup = "selectship2(event)"></img>
 			</div>
-			<div id = "bullet(1)_0" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "m_ship3" style = "position: absolute; overflow: hidden;">
+				<img id = "shippic3"  style = "cursor: url('images/sword.png'), default;" onmouseup = "selectship3(event)"></img>
 			</div>
-			<div id = "bullet(2)_0" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "m_ship4" style = "position: absolute; overflow: hidden;">
+				<img id = "shippic4"  style = "cursor: url('images/sword.png'), default;" onmouseup = "selectship4(event)"></img>
 			</div>
-			<div id = "bullet(3)_0" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "m_ship5" style = "position: absolute; overflow: hidden;">
+				<img id = "shippic5"  style = "cursor: url('images/sword.png'), default;" onmouseup = "selectship5(event)"></img>
 			</div>
-			<div id = "bullet(4)_0" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "m_ship6" style = "position: absolute; overflow: hidden;">
+				<img id = "shippic6"  style = "cursor: url('images/sword.png'), default;" onmouseup = "selectship6(event)"></img>
 			</div>
-			<div id = "bullet(5)_0" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
-			</div>
-			<div id = "bullet(6)_0" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
-			</div>
-			<div id = "bullet(7)_0" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
-			</div>
-			<div id = "bullet(8)_0" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "m_ship7" style = "position: absolute; overflow: hidden;">
+				<img id = "shippic7"  style = "cursor: url('images/sword.png'), default;" onmouseup = "selectship7(event)"></img>
 			</div>
 			
-			<div id = "bullet_shadow1" style = "position: absolute; top: 75px; left: 75px; display: none">
+			
+			<div id = "bullet_shadow0" style = "position: absolute; display: none">
 				<img id = "bullet_pic" src = "images/shadow.png"></img>
 			</div>
-			<div id = "bullet(1)_1" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "bullet(1)_0" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
 			</div>
-			<div id = "bullet(2)_1" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "bullet(2)_0" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
 			</div>
-			<div id = "bullet(3)_1" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "bullet(3)_0" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
 			</div>
-			<div id = "bullet(4)_1" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "bullet(4)_0" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
 			</div>
-			<div id = "bullet(5)_1" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "bullet(5)_0" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
 			</div>
-			<div id = "bullet(6)_1" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "bullet(6)_0" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
 			</div>
-			<div id = "bullet(7)_1" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "bullet(7)_0" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
 			</div>
-			<div id = "bullet(8)_1" style = "position: absolute; top: 75px; left: 75px; display: none">
-				<img id = "bullet_pic" src = "images/rock.png"></img>
+			<div id = "bullet(8)_0" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
 			</div>
+			
+			<div id = "bullet_shadow1" style = "position: absolute; display: none">
+				<img src = "images/shadow.png"></img>
+			</div>
+			<div id = "bullet(1)_1" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(2)_1" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(3)_1" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(4)_1" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(5)_1" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(6)_1" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(7)_1" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(8)_1" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			
+			<div id = "bullet_shadow2" style = "position: absolute; display: none">
+				<img src = "images/shadow.png"></img>
+			</div>
+			<div id = "bullet(1)_2" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(2)_2" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(3)_2" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(4)_2" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(5)_2" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(6)_2" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(7)_2" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(8)_2" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			
+			<div id = "bullet_shadow3" style = "position: absolute; display: none">
+				<img src = "images/shadow.png"></img>
+			</div>
+			<div id = "bullet(1)_3" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(2)_3" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(3)_3" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(4)_3" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(5)_3" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(6)_3" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(7)_3" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(8)_3" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			
+			<div id = "bullet_shadow4" style = "position: absolute; display: none">
+				<img src = "images/shadow.png"></img>
+			</div>
+			<div id = "bullet(1)_4" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(2)_4" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(3)_4" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(4)_4" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(5)_4" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(6)_4" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(7)_4" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(8)_4" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			
+			<div id = "bullet_shadow5" style = "position: absolute; display: none">
+				<img src = "images/shadow.png"></img>
+			</div>
+			<div id = "bullet(1)_5" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(2)_5" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(3)_5" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(4)_5" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(5)_5" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(6)_5" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(7)_5" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(8)_5" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			
+			<div id = "bullet_shadow6" style = "position: absolute; display: none">
+				<img src = "images/shadow.png"></img>
+			</div>
+			<div id = "bullet(1)_6" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(2)_6" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(3)_6" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(4)_6" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(5)_6" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(6)_6" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(7)_6" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(8)_6" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			
+			<div id = "bullet_shadow7" style = "position: absolute; display: none">
+				<img src = "images/shadow.png"></img>
+			</div>
+			<div id = "bullet(1)_7" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(2)_7" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(3)_7" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(4)_7" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(5)_7" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(6)_7" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(7)_7" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			<div id = "bullet(8)_7" style = "position: absolute; display: none">
+				<img src = "images/rock.png"></img>
+			</div>
+			
+						
 		</div>
 		
 		<div id = "m_ship_status" style = "position:relative; width: 300px; height: 380px; border: 1px solid; top:-400px; left:1000px; font-size:30px; padding: 10px;">
-			<div id = "shipname">Name：快速战舰-复兴</div>
+			<div id = "shipname">Name：</div>
 			<div>&nbsp;</div>
 			<div id = "hp">HP</div>
 			<div>&nbsp;</div>
@@ -87,148 +294,109 @@
 			<div>&nbsp;</div>
 			<div id = "speed">Speed</div>
 		</div>
+		
+		
+		
+		<audio id = "s_sink" src = "sounds/sshipsink-8.wav"></audio>
+		
+		<audio id = "shoot0"></audio>
+		<audio id = "bullet0"></audio>
+		<audio id = "zuo0_1"></audio>
+		<audio id = "zuo0_2"></audio>
+		<audio id = "you0_1"></audio>
+		<audio id = "you0_2"></audio>
+		
+		<audio id = "shoot1"></audio>
+		<audio id = "bullet1"></audio>
+		<audio id = "zuo1_1"></audio>
+		<audio id = "zuo1_2"></audio>
+		<audio id = "you1_1"></audio>
+		<audio id = "you1_2"></audio>
+		
+		<audio id = "shoot2"></audio>
+		<audio id = "bullet2"></audio>
+		<audio id = "zuo2_1"></audio>
+		<audio id = "zuo2_2"></audio>
+		<audio id = "you2_1"></audio>
+		<audio id = "you2_2"></audio>
+		
+		<audio id = "shoot3"></audio>
+		<audio id = "bullet3"></audio>
+		<audio id = "zuo3_1"></audio>
+		<audio id = "zuo3_2"></audio>
+		<audio id = "you3_1"></audio>
+		<audio id = "you3_2"></audio>
+		
+		<audio id = "shoot4"></audio>
+		<audio id = "bullet4"></audio>
+		<audio id = "zuo4_1"></audio>
+		<audio id = "zuo4_2"></audio>
+		<audio id = "you4_1"></audio>
+		<audio id = "you4_2"></audio>
+		
+		<audio id = "shoot5"></audio>
+		<audio id = "bullet5"></audio>
+		<audio id = "zuo5_1"></audio>
+		<audio id = "zuo5_2"></audio>
+		<audio id = "you5_1"></audio>
+		<audio id = "you5_2"></audio>
+		
+		<audio id = "shoot6"></audio>
+		<audio id = "bullet6"></audio>
+		<audio id = "zuo6_1"></audio>
+		<audio id = "zuo6_2"></audio>
+		<audio id = "you6_1"></audio>
+		<audio id = "you6_2"></audio>
+		
+		<audio id = "shoot7"></audio>
+		<audio id = "bullet7"></audio>
+		<audio id = "zuo7_1"></audio>
+		<audio id = "zuo7_2"></audio>
+		<audio id = "you7_1"></audio>
+		<audio id = "you7_2"></audio>
+		
+		<audio id = "s_gameover" src = "sounds/v_gameover.ogg"></audio>
+		<audio id = "s_start" src = "sounds/jv3letsgo.wav"></audio>
+		<audio id = "s_victory" src = "sounds/v_levelcomplete.ogg"></audio>
 	</body>
 <html>
 
 <script language = "javascript">
 var maptime = 0;
+var m_loop;
 var map_offset_x = 0;
 var map_offset_y = 0;
 var m_ship_selected;
 var m_ship = new Array(2);
-var m_refresh_interval = 200;//每次刷新的周期·
-m_ship[0] = new Object();
-m_ship[0].pos_x = 0;
-m_ship[0].pos_y = 0;
-m_ship[0].radius = 37.5;
-m_ship[0].orientation = 23;
-m_ship[0].order = "stop";
-m_ship[0].damage = 33;
-m_ship[0].hp = 625;
-m_ship[0].current_hp = 625;
-m_ship[0].range = 7;
-m_ship[0].movespeed = 17;
-m_ship[0].death = false;//death = true表示已经死了，false表示还活着的
-m_ship[0].target_x = 300;
-m_ship[0].target_y = 300;
-
-m_ship[1] = new Object();
-m_ship[1].pos_x = 150;
-m_ship[1].pos_y = 0;
-m_ship[1].radius = 37.5;
-m_ship[1].orientation = 19;
-m_ship[1].order = "stop";
-m_ship[1].damage = 33;
-m_ship[1].hp = 625;
-m_ship[1].current_hp = 305;
-m_ship[1].range = 7;
-m_ship[1].movespeed = 17;
-m_ship[1].death = false;
-m_ship[1].target_x = 50;
-m_ship[1].target_y = 50;
+var m_refresh_interval = 100;//每次刷新的周期·
+var m_lastsound = 1;//
+var m_ownship = 3;
+var m_victory;
+var m_lose;
+var m_level = 1;//当前level
+var m_shipname = new Array();//{'战争阀-石器时代','战争阀-石器时代','战舰-铜','快速战舰-铜','战舰-中世纪','快速战舰-复兴','快速战舰-复兴','快速战舰-王室的','战舰-工业革命时代'};
+m_shipname[0] = "战争筏-石器时代";
+m_shipname[1] = "战争筏-石器时代";
+m_shipname[2] = "战舰-铜";
+m_shipname[3] = "快速战舰-铜";
+m_shipname[4] = "战舰-中世纪";
+m_shipname[5] = "快速战舰-复兴";
+m_shipname[6] = "快速战舰-复兴";
+m_shipname[7] = "快速战舰-王室的";
+m_shipname[8] = "战舰-工业革命时代";
+var h = 20;
+//loaddata(3);
 //m_ship[1] = new Object();
 //m_ship[2] = new Object();
+
 document.oncontextmenu = function()//屏蔽鼠标右键  
 {  
    return false;  
 } 
-var m_loop = setInterval("m_refresh()", m_refresh_interval); 
-//主循环
-function m_refresh(){
-	maptime++;
-	//下面是实现上一个回合的order并逻辑判断；
-	var i;
-	var ele;//element
-	for (i = 0; i < m_ship.length; i++){//对每艘船实现
-		if (m_ship[i].order == 'spin+'){//左旋
-			m_ship[i].orientation = (m_ship[i].orientation + 1) % 24;
-			ele = document.getElementById('m_ship' + i);//获取船【i】
-			ele.firstChild.nextSibling.src = 'images/ship_' + m_ship[i].orientation + '.png';
-		}
-		if (m_ship[i].order == 'spin-'){//右旋
-			m_ship[i].orientation = (m_ship[i].orientation + 23) % 24;
-			ele = document.getElementById('m_ship' + i);//获取船【i】
-			ele.firstChild.nextSibling.src = 'images/ship_' + m_ship[i].orientation + '.png';
-		}
-		if(m_ship[i].order.indexOf("moveto") >= 0 )  { //船的平移运动和旋转
-			var s = m_ship[i].order;
-			var w = m_ship[i].order.indexOf(',');
-			var v = m_ship[i].order.indexOf(')');
-			var z = m_ship[i].order.substr(w+1).indexOf(',') + w+1;
-			var m_x = s.substring(7, w);
-			var m_y = s.substring(w + 1, z);
-			var m_r = s.substring(z + 1, v);
-			m_r = parseInt(m_r);
-			console.log(m_x);
-			console.log(m_y);
-			console.log(m_r);
-			//下面用来突变船的坐标并显示
-			set_ship_pos(i, m_x, m_y, m_r);
-		}
-		if (m_ship[i].order == "shoot"){//发炮
-			m_fire(m_ship[i].pos_x + m_ship[i].radius, m_ship[i].pos_y + m_ship[i].radius, m_ship[i].target_x, m_ship[i].target_y, 20, i);//最后liang个是弹道速度
-		}
-		m_ship[i].order = "stop";
-	}
-	//将order置为stop
-	
- 
-	
-	//下面是计算order的过程
-	for (i = 0; i < m_ship.length; i++){
-		if (m_ship[i].current_hp <= 0 && m_ship[i].death == false){//船刚死
-		m_ship[i].order = "die";
-		m_ship[i].death = true;
-		//此处应有船死的特技
-		ship_sink(i);
-	}
-	}
-}
-document.onkeydown=function(event){ 
-var e = event || window.event || arguments.callee.caller.arguments[0]; 
-if(e && e.keyCode==90){ // 按 z键
-	m_ship[0].order = "spin+";
-}
-else if (e && e.keyCode==88){//按x键
-	m_ship[0].order = "spin-";
-}
-}
+document.getElementById("m_showwindow").onmouseup = rightButtonListener;
+document.onkeydown = keyListener;
+//m_loop = setInterval("m_refresh()", m_refresh_interval); 
 
-function select_ship(){//鼠标单击某个舰船
-	if (typeof(m_ship_selected) == 'undefined')
-		return;
-	if (m_ship[m_ship_selected].current_hp <= 0)//船死了
-		return;
-	var m_select = document.getElementById('selectcircle');
-	m_select.style.top = m_ship[m_ship_selected].pos_y - map_offset_y + 'px';
-	m_select.style.left = m_ship[m_ship_selected].pos_x - map_offset_x + 'px';
-	m_select.style.display = "block";
-	//设置右边的东西
-	document.getElementById('shipname').innerHTML = '战舰-复兴';//待修改
-	document.getElementById('hp').innerHTML = 'HP: ' + m_ship[m_ship_selected].current_hp + '/' + m_ship[m_ship_selected].hp;
-	document.getElementById('damage').innerHTML = 'Damage: ' + m_ship[m_ship_selected].damage;
-	document.getElementById('range').innerHTML = 'Range: ' + m_ship[m_ship_selected].range;
-	document.getElementById('speed').innerHTML = 'Movespeed: ' + m_ship[m_ship_selected].movespeed;
-}
-
-function selectship0(){
-	m_ship_selected = 0;
-}
-function selectship1(){
-	m_ship_selected = 1;
-}
-function selectship2(){
-	m_ship_selected = 2;
-}
-function selectship3(){
-	m_ship_selected = 3;
-}
-function selectship4(){
-	m_ship_selected = 4;
-}
-function selectship5(){
-	m_ship_selected = 5;
-}
 
 function ship_sink(i){//m_ship[i]沉没
 	var x = m_ship[i].pos_x - map_offset_x;
@@ -236,6 +404,8 @@ function ship_sink(i){//m_ship[i]沉没
 	//隐藏原来的东西
 	var lastshipdiv = document.getElementById("m_ship" + i);
 	lastshipdiv.style.display = "none";
+	//播放音效
+	document.getElementById("s_sink").play();
 	//创建爆炸特技！
 	var m_show = document.getElementById("m_showwindow");
 	m_show.innerHTML += '<div id = "m_shipremains'+ i +'" style = "position: absolute; top: ' + y + 'px; left: ' + x + 'px; overflow:hidden"><img src = "images/BOOM_75.png"></img></div>';
@@ -269,7 +439,7 @@ function ship_die_1(i){
 	var boom = document.getElementById("m_shipremains" + i);
 	boom.style.width = 2 * m_ship[i].radius + 'px';
 	boom.style.height = 2 * m_ship[i].radius + 'px';
-	boom.firstChild.src = "images/ship_" + m_ship[i].orientation + ".png";
+	boom.firstChild.src = "images/ship["+m_ship[i].m_type+"]_" + m_ship[i].orientation + ".png";
 }
 
 function ship_die_2(i, x){
@@ -302,7 +472,7 @@ function set_ship_pos(i, m_x, m_y, m_r){
 	pic.style.left = m_ship[i].pos_x - map_offset_x + 'px';
 	pic.style.top = m_ship[i].pos_y - map_offset_y + 'px';
 	if (m_r != 0)
-		document.getElementById('shippic' + i).src = 'images/ship_' + m_ship[i].orientation + '.png';
+		document.getElementById('shippic' + i).src = 'images/ship['+m_ship[i].m_type+']_' + m_ship[i].orientation + '.png';
 	if (m_ship_selected == i){//把选择框一起运动
 		var m_circle = document.getElementById('selectcircle');
 		m_circle.style.left = m_ship[i].pos_x - map_offset_x + 'px';
@@ -312,7 +482,12 @@ function set_ship_pos(i, m_x, m_y, m_r){
 
 function m_fire(from_x, from_y, to_x, to_y, speed, i){
 	var totaltime = Math.ceil(Math.sqrt((from_x - to_x)*(from_x - to_x) + (from_y - to_y)*(from_y - to_y)) / speed);
+	//声音
+	
+	document.getElementById("shoot" + i).play();
+	
 	//原地放一个炮弹影子
+	document.getElementById('bullet_shadow'+ i).style.display = "block";
 	document.getElementById('bullet_shadow' + i).style.display = "block";
 	document.getElementById('bullet(1)_' + i).style.display = "block";
 	document.getElementById('bullet(2)_' + i).style.display = "block";
@@ -370,7 +545,6 @@ function bulletfly(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime){
 	}
 }
 function bulletfly2(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime){
-	var h = 80;
 	//alert("fly");
 	document.getElementById('bullet(1)_' + i).style.opacity = m_alpha;
 	document.getElementById('bullet(1)_' + i).style.left = Math.round(from_x + x*(to_x - from_x) / totaltime) - map_offset_x + 'px';
@@ -380,7 +554,6 @@ function bulletfly2(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime)
 	}
 }
 function bulletfly3(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime){
-	var h = 80;
 	//alert("fly");
 	document.getElementById('bullet(2)_' + i).style.opacity = m_alpha;
 	document.getElementById('bullet(2)_' + i).style.left = Math.round(from_x + x*(to_x - from_x) / totaltime) - map_offset_x + 'px';
@@ -390,7 +563,6 @@ function bulletfly3(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime)
 	}
 }
 function bulletfly4(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime){
-	var h = 80;
 	//alert("fly");
 	document.getElementById('bullet(3)_' + i).style.opacity = m_alpha;
 	document.getElementById('bullet(3)_' + i).style.left = Math.round(from_x + x*(to_x - from_x) / totaltime) - map_offset_x + 'px';
@@ -400,7 +572,6 @@ function bulletfly4(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime)
 	}
 }
 function bulletfly5(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime){
-	var h = 80;
 	//alert("fly");
 	document.getElementById('bullet(4)_' + i).style.opacity = m_alpha;
 	document.getElementById('bullet(4)_' + i).style.left = Math.round(from_x + x*(to_x - from_x) / totaltime) - map_offset_x + 'px';
@@ -410,7 +581,6 @@ function bulletfly5(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime)
 	}
 }
 function bulletfly6(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime){
-	var h = 80;
 	//alert("fly");
 	document.getElementById('bullet(5)_' + i).style.opacity = m_alpha;
 	document.getElementById('bullet(5)_' + i).style.left = Math.round(from_x + x*(to_x - from_x) / totaltime) - map_offset_x + 'px';
@@ -420,7 +590,6 @@ function bulletfly6(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime)
 	}
 }
 function bulletfly7(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime){
-	var h = 80;
 	//alert("fly");
 	document.getElementById('bullet(6)_' + i).style.opacity = m_alpha;
 	document.getElementById('bullet(6)_' + i).style.left = Math.round(from_x + x*(to_x - from_x) / totaltime) - map_offset_x + 'px';
@@ -430,7 +599,6 @@ function bulletfly7(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime)
 	}
 }
 function bulletfly8(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime){
-	var h = 80;
 	//alert("fly");
 	document.getElementById('bullet(7)_' + i).style.opacity = m_alpha;
 	document.getElementById('bullet(7)_' + i).style.left = Math.round(from_x + x*(to_x - from_x) / totaltime) - map_offset_x + 'px';
@@ -440,7 +608,6 @@ function bulletfly8(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime)
 	}
 }
 function bulletfly9(i, speed, from_x, from_y, to_x, to_y, x, m_alpha, totaltime){
-	var h = 80;
 	//alert("fly");
 	document.getElementById('bullet(8)_' + i).style.opacity = m_alpha;
 	document.getElementById('bullet(8)_' + i).style.left = Math.round(from_x + x*(to_x - from_x) / totaltime) - map_offset_x + 'px';
@@ -463,5 +630,732 @@ function judge_current_hp(i, x, y){//判定ship[i]子弹在(x,y)爆炸造成的�
 			}
 		}
 	}
+	document.getElementById("bullet"+i).play();
+}
+
+function loaddata(level){
+	var datadamage = new Array();
+	datadamage[0] = 10;
+	datadamage[1] = 60;
+	datadamage[2] = 17;
+	datadamage[3] = 100;
+	datadamage[4] = 33;
+	datadamage[5] = 50;
+	datadamage[6] = 200;
+	
+	var datahp = new Array();
+	datahp[0] = 275;
+	datahp[1] = 800;
+	datahp[2] = 360;
+	datahp[3] = 1500;
+	datahp[4] = 500;
+	datahp[5] = 750;
+	datahp[6] = 5000;
+	
+	var datarange = new Array();
+	datarange[0] = 7;
+	datarange[1] = 9;
+	datarange[2] = 8;
+	datarange[3] = 10;
+	datarange[4] = 8;
+	datarange[5] = 8;
+	datarange[6] = 16;
+	
+	var datamovespeed = new Array();
+	datamovespeed[0] = 5;
+	datamovespeed[1] = 2;
+	datamovespeed[2] = 6;
+	datamovespeed[3] = 3;
+	datamovespeed[4] = 6;
+	datamovespeed[5] = 7;
+	datamovespeed[6] = 4;
+	
+	var dataattackcd = new Array();
+	dataattackcd[0] = 15;
+	dataattackcd[1] = 30;
+	dataattackcd[2] = 15;
+	dataattackcd[3] = 30;
+	dataattackcd[4] = 15;
+	dataattackcd[5] = 15;
+	dataattackcd[6] = 30;
+	
+	if (level == 1){
+		m_ship.length = 6;
+		m_ship[0] = new Object();
+		m_ship[0].pos_x = 63;
+		m_ship[0].pos_y = 63;
+		m_ship[0].radius = 37.5;
+		m_ship[0].orientation = 0;
+		m_ship[0].order = "stop";
+		m_ship[0].damage = datadamage[0];
+		m_ship[0].hp = datahp[0];
+		m_ship[0].current_hp = datahp[0];
+		m_ship[0].range = datarange[0];
+		m_ship[0].movespeed = datamovespeed[0];
+		m_ship[0].death = false;
+		m_ship[0].lastAttack = -dataattackcd[0];
+		m_ship[0].attackCD = dataattackcd[0];
+		m_ship[0].attackStyle = 2;
+		m_ship[0].m_type = 0;
+	
+		m_ship[1] = new Object();
+		m_ship[1].pos_x = 63;
+		m_ship[1].pos_y = 163;
+		m_ship[1].radius = 37.5;
+		m_ship[1].orientation = 0;
+		m_ship[1].order = "stop";
+		m_ship[1].damage = datadamage[0];
+		m_ship[1].hp = datahp[0];
+		m_ship[1].current_hp = datahp[0];
+		m_ship[1].range = datarange[0];
+		m_ship[1].movespeed = datamovespeed[0];
+		m_ship[1].death = false;
+		m_ship[1].lastAttack = -dataattackcd[0];
+		m_ship[1].attackCD = dataattackcd[0];
+		m_ship[1].attackStyle = 2;
+		m_ship[1].m_type = 0;
+		
+		m_ship[2] = new Object();
+		m_ship[2].pos_x = 63;
+		m_ship[2].pos_y = 263;
+		m_ship[2].radius = 37.5;
+		m_ship[2].orientation = 0;
+		m_ship[2].order = "stop";
+		m_ship[2].damage = datadamage[0];
+		m_ship[2].hp = datahp[0];
+		m_ship[2].current_hp = datahp[0];
+		m_ship[2].range = datarange[0];
+		m_ship[2].movespeed = datamovespeed[0];
+		m_ship[2].death = false;
+		m_ship[2].lastAttack = -dataattackcd[0];
+		m_ship[2].attackCD = dataattackcd[0];
+		m_ship[2].attackStyle = 2;
+		m_ship[2].m_type = 0;
+		
+		m_ship[3] = new Object();
+		m_ship[3].pos_x = 463;
+		m_ship[3].pos_y = 63;
+		m_ship[3].radius = 37.5;
+		m_ship[3].orientation = 12;
+		m_ship[3].order = "stop";
+		m_ship[3].damage = datadamage[0];
+		m_ship[3].hp = datahp[0];
+		m_ship[3].current_hp = datahp[0];
+		m_ship[3].range = datarange[0];
+		m_ship[3].movespeed = datamovespeed[0];
+		m_ship[3].death = false;
+		m_ship[3].lastAttack = -dataattackcd[0];
+		m_ship[3].attackCD = dataattackcd[0];
+		m_ship[3].attackStyle = 2;
+		m_ship[3].m_type = 1;
+		
+		m_ship[4] = new Object();
+		m_ship[4].pos_x = 463;
+		m_ship[4].pos_y = 163;
+		m_ship[4].radius = 37.5;
+		m_ship[4].orientation = 12;
+		m_ship[4].order = "stop";
+		m_ship[4].damage = datadamage[0];
+		m_ship[4].hp = datahp[0];
+		m_ship[4].current_hp = datahp[0];
+		m_ship[4].range = datarange[0];
+		m_ship[4].movespeed = datamovespeed[0];
+		m_ship[4].death = false;
+		m_ship[4].lastAttack = -dataattackcd[0];
+		m_ship[4].attackCD = dataattackcd[0];
+		m_ship[4].attackStyle = 2;
+		m_ship[4].m_type = 1;
+		
+		m_ship[5] = new Object();
+		m_ship[5].pos_x = 463;
+		m_ship[5].pos_y = 263;
+		m_ship[5].radius = 37.5;
+		m_ship[5].orientation = 12;
+		m_ship[5].order = "stop";
+		m_ship[5].damage = datadamage[0];
+		m_ship[5].hp = datahp[0];
+		m_ship[5].current_hp = datahp[0];
+		m_ship[5].range = datarange[0];
+		m_ship[5].movespeed = datamovespeed[0];
+		m_ship[5].death = false;
+		m_ship[5].lastAttack = -dataattackcd[0];
+		m_ship[5].attackCD = dataattackcd[0];
+		m_ship[5].attackStyle = 2;
+		m_ship[5].m_type = 1;
+	}
+	else if (level == 2){
+		m_ship.length = 4;
+		m_ship[0] = new Object();
+		m_ship[0].pos_x = 63;
+		m_ship[0].pos_y = 63;
+		m_ship[0].radius = 37.5;
+		m_ship[0].orientation = 0;
+		m_ship[0].order = "stop";
+		m_ship[0].damage = datadamage[0];
+		m_ship[0].hp = datahp[0];
+		m_ship[0].current_hp = datahp[0];
+		m_ship[0].range = datarange[0];
+		m_ship[0].movespeed = datamovespeed[0];
+		m_ship[0].death = false;
+		m_ship[0].lastAttack = -dataattackcd[0];
+		m_ship[0].attackCD = dataattackcd[0];
+		m_ship[0].attackStyle = 2;
+		m_ship[0].m_type = 0;
+	
+		m_ship[1] = new Object();
+		m_ship[1].pos_x = 63;
+		m_ship[1].pos_y = 163;
+		m_ship[1].radius = 37.5;
+		m_ship[1].orientation = 0;
+		m_ship[1].order = "stop";
+		m_ship[1].damage = datadamage[0];
+		m_ship[1].hp = datahp[0];
+		m_ship[1].current_hp = datahp[0];
+		m_ship[1].range = datarange[0];
+		m_ship[1].movespeed = datamovespeed[0];
+		m_ship[1].death = false;
+		m_ship[1].lastAttack = -dataattackcd[0];
+		m_ship[1].attackCD = dataattackcd[0];
+		m_ship[1].attackStyle = 2;
+		m_ship[1].m_type = 0;
+		
+		m_ship[2] = new Object();
+		m_ship[2].pos_x = 63;
+		m_ship[2].pos_y = 263;
+		m_ship[2].radius = 37.5;
+		m_ship[2].orientation = 0;
+		m_ship[2].order = "stop";
+		m_ship[2].damage = datadamage[0];
+		m_ship[2].hp = datahp[0];
+		m_ship[2].current_hp = datahp[0];
+		m_ship[2].range = datarange[0];
+		m_ship[2].movespeed = datamovespeed[0];
+		m_ship[2].death = false;
+		m_ship[2].lastAttack = -dataattackcd[0];
+		m_ship[2].attackCD = dataattackcd[0];
+		m_ship[2].attackStyle = 2;
+		m_ship[2].m_type = 0;
+		
+		m_ship[3] = new Object();
+		m_ship[3].pos_x = 463;
+		m_ship[3].pos_y = 163;
+		m_ship[3].radius = 50;
+		m_ship[3].orientation = 12;
+		m_ship[3].order = "stop";
+		m_ship[3].damage = datadamage[1];
+		m_ship[3].hp = datahp[1];
+		m_ship[3].current_hp = datahp[1];
+		m_ship[3].range = datarange[1];
+		m_ship[3].movespeed = datamovespeed[1];
+		m_ship[3].death = false;
+		m_ship[3].lastAttack = -dataattackcd[1];
+		m_ship[3].attackCD = dataattackcd[1];
+		m_ship[3].attackStyle = 2;
+		m_ship[3].m_type = 2;
+	}
+	if (level == 3){
+		m_ship.length = 8;
+		m_ship[0] = new Object();
+		m_ship[0].pos_x = 63;
+		m_ship[0].pos_y = 63;
+		m_ship[0].radius = 37.5;
+		m_ship[0].orientation = 0;
+		m_ship[0].order = "stop";
+		m_ship[0].damage = datadamage[2];
+		m_ship[0].hp = datahp[2];
+		m_ship[0].current_hp = datahp[2];
+		m_ship[0].range = datarange[2];
+		m_ship[0].movespeed = datamovespeed[2];
+		m_ship[0].death = false;
+		m_ship[0].lastAttack = -dataattackcd[2];
+		m_ship[0].attackCD = dataattackcd[2];
+		m_ship[0].attackStyle = 2;
+		m_ship[0].m_type = 3;
+	
+		m_ship[1] = new Object();
+		m_ship[1].pos_x = 63;
+		m_ship[1].pos_y = 163;
+		m_ship[1].radius = 37.5;
+		m_ship[1].orientation = 0;
+		m_ship[1].order = "stop";
+		m_ship[1].damage = datadamage[2];
+		m_ship[1].hp = datahp[2];
+		m_ship[1].current_hp = datahp[2];
+		m_ship[1].range = datarange[2];
+		m_ship[1].movespeed = datamovespeed[2];
+		m_ship[1].death = false;
+		m_ship[1].lastAttack = -dataattackcd[2];
+		m_ship[1].attackCD = dataattackcd[2];
+		m_ship[1].attackStyle = 2;
+		m_ship[1].m_type = 3;
+		
+		m_ship[2] = new Object();
+		m_ship[2].pos_x = 63;
+		m_ship[2].pos_y = 263;
+		m_ship[2].radius = 37.5;
+		m_ship[2].orientation = 0;
+		m_ship[2].order = "stop";
+		m_ship[2].damage = datadamage[2];
+		m_ship[2].hp = datahp[2];
+		m_ship[2].current_hp = datahp[2];
+		m_ship[2].range = datarange[2];
+		m_ship[2].movespeed = datamovespeed[2];
+		m_ship[2].death = false;
+		m_ship[2].lastAttack = -dataattackcd[2];
+		m_ship[2].attackCD = dataattackcd[2];
+		m_ship[2].attackStyle = 2;
+		m_ship[2].m_type = 3;
+		
+		m_ship[3] = new Object();
+		m_ship[3].pos_x = 463;
+		m_ship[3].pos_y = 63;
+		m_ship[3].radius = 37.5;
+		m_ship[3].orientation = 12;
+		m_ship[3].order = "stop";
+		m_ship[3].damage = datadamage[0];
+		m_ship[3].hp = datahp[0];
+		m_ship[3].current_hp = datahp[0];
+		m_ship[3].range = datarange[0];
+		m_ship[3].movespeed = datamovespeed[0];
+		m_ship[3].death = false;
+		m_ship[3].lastAttack = -dataattackcd[0];
+		m_ship[3].attackCD = dataattackcd[0];
+		m_ship[3].attackStyle = 2;
+		m_ship[3].m_type = 1;
+		
+		m_ship[4] = new Object();
+		m_ship[4].pos_x = 463;
+		m_ship[4].pos_y = 163;
+		m_ship[4].radius = 37.5;
+		m_ship[4].orientation = 12;
+		m_ship[4].order = "stop";
+		m_ship[4].damage = datadamage[0];
+		m_ship[4].hp = datahp[0];
+		m_ship[4].current_hp = datahp[0];
+		m_ship[4].range = datarange[0];
+		m_ship[4].movespeed = datamovespeed[0];
+		m_ship[4].death = false;
+		m_ship[4].lastAttack = -dataattackcd[0];
+		m_ship[4].attackCD = dataattackcd[0];
+		m_ship[4].attackStyle = 2;
+		m_ship[4].m_type = 1;
+		
+		m_ship[5] = new Object();
+		m_ship[5].pos_x = 463;
+		m_ship[5].pos_y = 263;
+		m_ship[5].radius = 37.5;
+		m_ship[5].orientation = 12;
+		m_ship[5].order = "stop";
+		m_ship[5].damage = datadamage[0];
+		m_ship[5].hp = datahp[0];
+		m_ship[5].current_hp = datahp[0];
+		m_ship[5].range = datarange[0];
+		m_ship[5].movespeed = datamovespeed[0];
+		m_ship[5].death = false;
+		m_ship[5].lastAttack = -dataattackcd[0];
+		m_ship[5].attackCD = dataattackcd[0];
+		m_ship[5].attackStyle = 2;
+		m_ship[5].m_type = 1;
+		
+		m_ship[6] = new Object();
+		m_ship[6].pos_x = 363;
+		m_ship[6].pos_y = 113;
+		m_ship[6].radius = 37.5;
+		m_ship[6].orientation = 12;
+		m_ship[6].order = "stop";
+		m_ship[6].damage = datadamage[0];
+		m_ship[6].hp = datahp[0];
+		m_ship[6].current_hp = datahp[0];
+		m_ship[6].range = datarange[0];
+		m_ship[6].movespeed = datamovespeed[0];
+		m_ship[6].death = false;
+		m_ship[6].lastAttack = -dataattackcd[0];
+		m_ship[6].attackCD = dataattackcd[0];
+		m_ship[6].attackStyle = 2;
+		m_ship[6].m_type = 1;
+		
+		m_ship[7] = new Object();
+		m_ship[7].pos_x = 363;
+		m_ship[7].pos_y = 213;
+		m_ship[7].radius = 37.5;
+		m_ship[7].orientation = 12;
+		m_ship[7].order = "stop";
+		m_ship[7].damage = datadamage[0];
+		m_ship[7].hp = datahp[0];
+		m_ship[7].current_hp = datahp[0];
+		m_ship[7].range = datarange[0];
+		m_ship[7].movespeed = datamovespeed[0];
+		m_ship[7].death = false;
+		m_ship[7].lastAttack = -dataattackcd[0];
+		m_ship[7].attackCD = dataattackcd[0];
+		m_ship[7].attackStyle = 2;
+		m_ship[7].m_type = 1;
+	}
+	if (level == 4){
+		m_ship.length = 4;
+		m_ship[0] = new Object();
+		m_ship[0].pos_x = 63;
+		m_ship[0].pos_y = 63;
+		m_ship[0].radius = 37.5;
+		m_ship[0].orientation = 0;
+		m_ship[0].order = "stop";
+		m_ship[0].damage = datadamage[2];
+		m_ship[0].hp = datahp[2];
+		m_ship[0].current_hp = datahp[2];
+		m_ship[0].range = datarange[2];
+		m_ship[0].movespeed = datamovespeed[2];
+		m_ship[0].death = false;
+		m_ship[0].lastAttack = -dataattackcd[2];
+		m_ship[0].attackCD = dataattackcd[2];
+		m_ship[0].attackStyle = 2;
+		m_ship[0].m_type = 3;
+	
+		m_ship[1] = new Object();
+		m_ship[1].pos_x = 63;
+		m_ship[1].pos_y = 163;
+		m_ship[1].radius = 37.5;
+		m_ship[1].orientation = 0;
+		m_ship[1].order = "stop";
+		m_ship[1].damage = datadamage[2];
+		m_ship[1].hp = datahp[2];
+		m_ship[1].current_hp = datahp[2];
+		m_ship[1].range = datarange[2];
+		m_ship[1].movespeed = datamovespeed[2];
+		m_ship[1].death = false;
+		m_ship[1].lastAttack = -dataattackcd[2];
+		m_ship[1].attackCD = dataattackcd[2];
+		m_ship[1].attackStyle = 2;
+		m_ship[1].m_type = 3;
+		
+		m_ship[2] = new Object();
+		m_ship[2].pos_x = 63;
+		m_ship[2].pos_y = 263;
+		m_ship[2].radius = 37.5;
+		m_ship[2].orientation = 0;
+		m_ship[2].order = "stop";
+		m_ship[2].damage = datadamage[2];
+		m_ship[2].hp = datahp[2];
+		m_ship[2].current_hp = datahp[2];
+		m_ship[2].range = datarange[2];
+		m_ship[2].movespeed = datamovespeed[2];
+		m_ship[2].death = false;
+		m_ship[2].lastAttack = -dataattackcd[2];
+		m_ship[2].attackCD = dataattackcd[2];
+		m_ship[2].attackStyle = 2;
+		m_ship[2].m_type = 3;
+		
+		m_ship[3] = new Object();
+		m_ship[3].pos_x = 463;
+		m_ship[3].pos_y = 163;
+		m_ship[3].radius = 50;
+		m_ship[3].orientation = 12;
+		m_ship[3].order = "stop";
+		m_ship[3].damage = datadamage[3];
+		m_ship[3].hp = datahp[3];
+		m_ship[3].current_hp = datahp[3];
+		m_ship[3].range = datarange[3];
+		m_ship[3].movespeed = datamovespeed[3];
+		m_ship[3].death = false;
+		m_ship[3].lastAttack = -dataattackcd[3];
+		m_ship[3].attackCD = dataattackcd[3];
+		m_ship[3].attackStyle = 2;
+		m_ship[3].m_type = 4;
+	}
+	if (level == 5){
+		m_ship.length = 6;
+		m_ship[0] = new Object();
+		m_ship[0].pos_x = 63;
+		m_ship[0].pos_y = 63;
+		m_ship[0].radius = 37.5;
+		m_ship[0].orientation = 0;
+		m_ship[0].order = "stop";
+		m_ship[0].damage = datadamage[4];
+		m_ship[0].hp = datahp[4];
+		m_ship[0].current_hp = datahp[4];
+		m_ship[0].range = datarange[4];
+		m_ship[0].movespeed = datamovespeed[4];
+		m_ship[0].death = false;
+		m_ship[0].lastAttack = -dataattackcd[4];
+		m_ship[0].attackCD = dataattackcd[4];
+		m_ship[0].attackStyle = 1;
+		m_ship[0].m_type = 6;
+	
+		m_ship[1] = new Object();
+		m_ship[1].pos_x = 63;
+		m_ship[1].pos_y = 163;
+		m_ship[1].radius = 37.5;
+		m_ship[1].orientation = 0;
+		m_ship[1].order = "stop";
+		m_ship[1].damage = datadamage[4];
+		m_ship[1].hp = datahp[4];
+		m_ship[1].current_hp = datahp[4];
+		m_ship[1].range = datarange[4];
+		m_ship[1].movespeed = datamovespeed[4];
+		m_ship[1].death = false;
+		m_ship[1].lastAttack = -dataattackcd[4];
+		m_ship[1].attackCD = dataattackcd[4];
+		m_ship[1].attackStyle = 1;
+		m_ship[1].m_type = 6;
+		
+		m_ship[2] = new Object();
+		m_ship[2].pos_x = 63;
+		m_ship[2].pos_y = 263;
+		m_ship[2].radius = 37.5;
+		m_ship[2].orientation = 0;
+		m_ship[2].order = "stop";
+		m_ship[2].damage = datadamage[4];
+		m_ship[2].hp = datahp[4];
+		m_ship[2].current_hp = datahp[4];
+		m_ship[2].range = datarange[4];
+		m_ship[2].movespeed = datamovespeed[4];
+		m_ship[2].death = false;
+		m_ship[2].lastAttack = -dataattackcd[4];
+		m_ship[2].attackCD = dataattackcd[4];
+		m_ship[2].attackStyle = 1;
+		m_ship[2].m_type = 6;
+		
+		m_ship[3] = new Object();
+		m_ship[3].pos_x = 463;
+		m_ship[3].pos_y = 63;
+		m_ship[3].radius = 37.5;
+		m_ship[3].orientation = 12;
+		m_ship[3].order = "stop";
+		m_ship[3].damage = datadamage[4];
+		m_ship[3].hp = datahp[4];
+		m_ship[3].current_hp = datahp[4];
+		m_ship[3].range = datarange[4];
+		m_ship[3].movespeed = datamovespeed[4];
+		m_ship[3].death = false;
+		m_ship[3].lastAttack = -dataattackcd[4];
+		m_ship[3].attackCD = dataattackcd[4];
+		m_ship[3].attackStyle = 1;
+		m_ship[3].m_type = 5;
+		
+		m_ship[4] = new Object();
+		m_ship[4].pos_x = 463;
+		m_ship[4].pos_y = 163;
+		m_ship[4].radius = 37.5;
+		m_ship[4].orientation = 12;
+		m_ship[4].order = "stop";
+		m_ship[4].damage = datadamage[4];
+		m_ship[4].hp = datahp[4];
+		m_ship[4].current_hp = datahp[4];
+		m_ship[4].range = datarange[4];
+		m_ship[4].movespeed = datamovespeed[4];
+		m_ship[4].death = false;
+		m_ship[4].lastAttack = -dataattackcd[4];
+		m_ship[4].attackCD = dataattackcd[4];
+		m_ship[4].attackStyle = 1;
+		m_ship[4].m_type = 5;
+		
+		m_ship[5] = new Object();
+		m_ship[5].pos_x = 463;
+		m_ship[5].pos_y = 263;
+		m_ship[5].radius = 37.5;
+		m_ship[5].orientation = 12;
+		m_ship[5].order = "stop";
+		m_ship[5].damage = datadamage[4];
+		m_ship[5].hp = datahp[0];
+		m_ship[5].current_hp = datahp[4];
+		m_ship[5].range = datarange[4];
+		m_ship[5].movespeed = datamovespeed[4];
+		m_ship[5].death = false;
+		m_ship[5].lastAttack = -dataattackcd[4];
+		m_ship[5].attackCD = dataattackcd[4];
+		m_ship[5].attackStyle = 1;
+		m_ship[5].m_type = 5;
+	}
+	if (level == 6){
+		m_ship.length = 4;
+		m_ship[0] = new Object();
+		m_ship[0].pos_x = 50;
+		m_ship[0].pos_y = 50;
+		m_ship[0].radius = 50;
+		m_ship[0].orientation = 0;
+		m_ship[0].order = "stop";
+		m_ship[0].damage = datadamage[5];
+		m_ship[0].hp = datahp[5];
+		m_ship[0].current_hp = datahp[5];
+		m_ship[0].range = datarange[5];
+		m_ship[0].movespeed = datamovespeed[5];
+		m_ship[0].death = false;
+		m_ship[0].lastAttack = -dataattackcd[5];
+		m_ship[0].attackCD = dataattackcd[5];
+		m_ship[0].attackStyle = 1;
+		m_ship[0].m_type = 7;
+	
+		m_ship[1] = new Object();
+		m_ship[1].pos_x = 50;
+		m_ship[1].pos_y = 150;
+		m_ship[1].radius = 50;
+		m_ship[1].orientation = 0;
+		m_ship[1].order = "stop";
+		m_ship[1].damage = datadamage[5];
+		m_ship[1].hp = datahp[5];
+		m_ship[1].current_hp = datahp[5];
+		m_ship[1].range = datarange[5];
+		m_ship[1].movespeed = datamovespeed[5];
+		m_ship[1].death = false;
+		m_ship[1].lastAttack = -dataattackcd[5];
+		m_ship[1].attackCD = dataattackcd[5];
+		m_ship[1].attackStyle = 1;
+		m_ship[1].m_type = 7;
+		
+		m_ship[2] = new Object();
+		m_ship[2].pos_x = 50;
+		m_ship[2].pos_y = 250;
+		m_ship[2].radius = 50;
+		m_ship[2].orientation = 0;
+		m_ship[2].order = "stop";
+		m_ship[2].damage = datadamage[5];
+		m_ship[2].hp = datahp[5];
+		m_ship[2].current_hp = datahp[5];
+		m_ship[2].range = datarange[5];
+		m_ship[2].movespeed = datamovespeed[5];
+		m_ship[2].death = false;
+		m_ship[2].lastAttack = -dataattackcd[5];
+		m_ship[2].attackCD = dataattackcd[5];
+		m_ship[2].attackStyle = 1;
+		m_ship[2].m_type = 7;
+		
+		m_ship[3] = new Object();
+		m_ship[3].pos_x = 437;
+		m_ship[3].pos_y = 137;
+		m_ship[3].radius = 63;
+		m_ship[3].orientation = 12;
+		m_ship[3].order = "stop";
+		m_ship[3].damage = datadamage[6];
+		m_ship[3].hp = datahp[6];
+		m_ship[3].current_hp = datahp[6];
+		m_ship[3].range = datarange[6];
+		m_ship[3].movespeed = datamovespeed[6];
+		m_ship[3].death = false;
+		m_ship[3].lastAttack = -dataattackcd[6];
+		m_ship[3].attackCD = dataattackcd[6];
+		m_ship[3].attackStyle = 1;
+		m_ship[3].m_type = 8;
+	}
+	for (i = 0; i < 8; i++)
+		document.getElementById('m_ship'+i).style.display = "none";
+	for (i = 0; i < m_ship.length; i++){
+	document.getElementById('shippic'+i).src = 'images/ship['+m_ship[i].m_type+']_'+m_ship[i].orientation+'.png';//载入船只图像
+	document.getElementById('m_ship'+i).style.top = m_ship[i].pos_y + 'px';
+	document.getElementById('m_ship'+i).style.left = m_ship[i].pos_x + 'px';
+	document.getElementById('m_ship'+i).style.display = "block";
+	if (m_ship[i].m_type == 0 || m_ship[i].m_type == 1 || m_ship[i].m_type == 2 || m_ship[i].m_type == 3 || m_ship[i].m_type == 4){//rock
+		document.getElementById('bullet(1)_' + i).firstChild.nextSibling.src = "images/rock.png";
+		
+	}
+	else if(m_ship[i].m_type == 5 || m_ship[i].m_type == 6 || m_ship[i].m_type == 7){
+		document.getElementById('bullet(1)_' + i).firstChild.nextSibling.src = "images/blackball.png";
+		document.getElementById('bullet(2)_' + i).firstChild.nextSibling.src = "images/blank.png";
+		document.getElementById('bullet(3)_' + i).firstChild.nextSibling.src = "images/blank.png";
+		document.getElementById('bullet(4)_' + i).firstChild.nextSibling.src = "images/blank.png";
+		document.getElementById('bullet(5)_' + i).firstChild.nextSibling.src = "images/blank.png";
+		document.getElementById('bullet(6)_' + i).firstChild.nextSibling.src = "images/blank.png";
+		document.getElementById('bullet(7)_' + i).firstChild.nextSibling.src = "images/blank.png";
+		document.getElementById('bullet(8)_' + i).firstChild.nextSibling.src = "images/blank.png";
+	}
+	else if (m_ship[i].m_type == 8){
+		document.getElementById('bullet(1)_' + i).firstChild.nextSibling.src = "images/fire.png";
+		document.getElementById('bullet(2)_' + i).firstChild.nextSibling.src = "images/fire.png";
+		document.getElementById('bullet(3)_' + i).firstChild.nextSibling.src = "images/fire.png";
+		document.getElementById('bullet(4)_' + i).firstChild.nextSibling.src = "images/fire.png";
+		document.getElementById('bullet(5)_' + i).firstChild.nextSibling.src = "images/fire.png";
+		document.getElementById('bullet(6)_' + i).firstChild.nextSibling.src = "images/fire.png";
+		document.getElementById('bullet(7)_' + i).firstChild.nextSibling.src = "images/fire.png";
+		document.getElementById('bullet(8)_' + i).firstChild.nextSibling.src = "images/fire.png";
+	}
+	
+	//载入音效
+	if (m_ship[i].m_type == 0 || m_ship[i].m_type == 3){
+		document.getElementById('shoot' + i).src = "sounds/scatapultshot-8.wav";
+		document.getElementById('bullet' + i).src = "sounds/rockhit-8.wav";
+		document.getElementById('zuo'+i+'_1').src = "sounds/ds2talas.wav";
+		document.getElementById('zuo'+i+'_2').src = "sounds/ds2sunte.wav";
+		document.getElementById('you'+i+'_1').src = "sounds/ds2pos.wav";
+		document.getElementById('you'+i+'_2').src = "sounds/ds2stoma.wav";
+	}
+	else if (m_ship[i].m_type == 6){
+		document.getElementById('shoot' + i).src = "sounds/cannon5-8.wav";
+		document.getElementById('bullet' + i).src = "sounds/explosion1-8.wav";
+		document.getElementById('zuo'+i+'_1').src = "sounds/kv2captain.wav";
+		document.getElementById('zuo'+i+'_2').src = "sounds/kv2orderscaptain.wav";
+		document.getElementById('you'+i+'_1').src = "sounds/kv2fullbroadside.wav";
+		document.getElementById('you'+i+'_2').src = "sounds/kv2fireabroadside.wav";
+	}
+	else if (m_ship[i].m_type == 7){
+		document.getElementById('shoot' + i).src = "sounds/cannon5-8.wav";
+		document.getElementById('bullet' + i).src = "sounds/explosion1-8.wav";
+		document.getElementById('zuo'+i+'_1').src = "sounds/wv2captain.wav";
+		document.getElementById('zuo'+i+'_2').src = "sounds/wv2orderscaptain.wav";
+		document.getElementById('you'+i+'_1').src = "sounds/wv2fireabroadside.wav";
+		document.getElementById('you'+i+'_2').src = "sounds/wv2raiseanchor.wav";
+	}
+	else if (m_ship[i].m_type == 1 || m_ship[i].m_type == 2 || m_ship[i].m_type == 4){
+		document.getElementById('shoot' + i).src = "sounds/scatapultshot-8.wav";
+		document.getElementById('bullet' + i).src = "sounds/rockhit-8.wav";
+	}
+	else if (m_ship[i].m_type == 5){
+		document.getElementById('shoot' + i).src = "sounds/cannon5-8.wav";
+		document.getElementById('bullet' + i).src = "sounds/explosion1-8.wav";
+	}
+	else if (m_ship[i].m_type == 8){
+		document.getElementById('shoot' + i).src = "sounds/cannon4-8.wav";
+		document.getElementById('bullet' + i).src = "sounds/explosion2-8.wav";
+	}
+	movePath[i] = [];
+}
+
+
+//m_extend();
+}
+
+function gameover(){
+	document.getElementById("s_gameover").play();
+	document.getElementById("m_gameover").style.display = "block";
+	clearInterval(m_loop);
+}
+function startgame(){
+	document.getElementById("m_gameover").style.display = "none";
+	document.getElementById("m_start").style.display = "none";
+	document.getElementById("m_victory").style.display = "none";
+	document.getElementById("s_start").play();
+	loaddata(m_level);
+	document.getElementById('selectcircle').style.display = "none";
+	
+	document.getElementById('shipname').innerHTML = 'Level:'+m_level;
+	document.getElementById('hp').innerHTML = 'HP: ';
+	document.getElementById('damage').innerHTML = 'Damage: ';
+	document.getElementById('range').innerHTML = 'Range: ';
+	document.getElementById('speed').innerHTML = 'Movespeed: ';
+	
+	m_lose = false;
+	m_victory = false;
+	
+	m_loop = setInterval("m_refresh()", m_refresh_interval);
+}
+
+function victory(){
+	document.getElementById("s_victory").play();
+	m_level++;
+	if (m_level <= 6){
+		document.getElementById("m_victory").style.display = "block";
+	}
+	else if (m_level == 7){
+		document.getElementById("m_showwindow").style.backgroundImage = 'url(images/finalwin.jpg)'
+	}
+	clearInterval(m_loop);
+}
+function autowin(l){
+	var i;
+	m_level = l;
+	for(i = m_ownship ; i < m_ship.length;i++)
+		m_ship[i].current_hp = 0;
+}
+function autolose(){
+	var i;
+	for(i = 0 ; i < m_ownship;i++)
+		m_ship[i].current_hp = 0;
 }
 </script>

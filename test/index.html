@@ -206,14 +206,15 @@
 	
 	var mycanvas = document.getElementById("mycanvas");
     var context = mycanvas.getContext("2d");
-	var offsetx = 10;
+	var offsetx = 20;
+	var leftx = 10;
 	context.lineWidth=1;
 	context.beginPath();
-	context.moveTo(0,offsetx);
-	context.lineTo(300,offsetx);
-	context.lineTo(300,offsetx+10);
-	context.lineTo(0,offsetx+10);
-	context.lineTo(0,offsetx);
+	context.moveTo(leftx,offsetx);
+	context.lineTo(300-leftx,offsetx);
+	context.lineTo(300-leftx,offsetx+10);
+	context.lineTo(leftx,offsetx+10);
+	context.lineTo(leftx,offsetx);
 	context.stroke();
 	context.closePath();
 	
@@ -223,14 +224,14 @@
 	context.fillStyle="#68EE68";
 	for (i = 0; i < sleepnum; i++)
 	{
-		context.fillRect(300*barstart[i],offsetx+1,300*barend[i]-300*barstart[i],8);
+		context.fillRect((300-2*leftx)*barstart[i]+leftx,offsetx+1,(300-2*leftx)*(barend[i]-barstart[i]),8);
 	}
 	for (i = 0; i < sleepnum; i++)
 	{
-		context.moveTo(300*barstart[i],offsetx);
-		context.lineTo(300*barstart[i],offsetx-8);
-		context.moveTo(300*barend[i],offsetx+10);
-		context.lineTo(300*barend[i],offsetx+8);
+		context.moveTo(leftx+(300-2*leftx)*barstart[i],offsetx);
+		context.lineTo(leftx+(300-2*leftx)*barstart[i],offsetx-8);
+		context.moveTo(leftx+(300-2*leftx)*barend[i],offsetx+10);
+		context.lineTo(leftx+(300-2*leftx)*barend[i],offsetx+18);
 	}
 	context.stroke();
 	context.closePath(0,0);

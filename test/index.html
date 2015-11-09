@@ -81,6 +81,10 @@
 			left:55%;
 			top:-60%;
 			}
+			#rijibencontainer{
+			width:100%;
+			height:100%;
+			}
 			.test1{
 			padding: 0;
 			margin: 0;
@@ -138,12 +142,7 @@
 			position:relative;
 			top:-20%;
 			}
-			.canvasdiv2{
-			width:100%;
-			height:90%;
-			position:relative;
-			top:-20%;
-			}
+			
 		</style>
 	</head>
 	<body>
@@ -178,9 +177,8 @@
 				</div>
 			</div>
 			<div id = "box4">
-				<div id = "canvasdiv2" class = "canvasdiv2">
-					<canvas id = "mycanvas2" class = "mycanvas">
-					</canvas>
+				<div id = "rijibencontainer">
+					<img src = "src/rijiben.jpg" class = "tou"></img>
 				</div>
 			</div>
 			<div id = "box5">
@@ -214,7 +212,6 @@
 	barend[2] = 21/24;
 	
 	var mycanvas = document.getElementById("mycanvas");
-	var mycanvas2 = document.getElementById("mycanvas2");
     var context = mycanvas.getContext("2d");
 	var offsetx = 30;
 	var leftx = 10;
@@ -255,14 +252,5 @@
 		ctx.fillText(sleepend[i], (300-2*leftx)*barend[i], offsetx+28);
 	}
 	
-    var ctx = mycanvas.getContext("2d");
-	var ctx2 = mycanvas2.getContext("2d");
-	var img=new Image()  
-	img.src="src/rijiben.jpg";
-	img.onload = function () //确保图片已经加载完毕  
-	{  
-		img.width = 30;
-		img.height = 20;	
-		ctx2.drawImage(img,0,20);  
-	}  
+	
 </script>

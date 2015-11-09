@@ -239,6 +239,10 @@
 	var ctx = mycanvas.getContext("2d");
     ctx.font = "1em Courier New";
     ctx.fillStyle = "blue";
-    ctx.fillText("CodePlayer+中文测试", 0, offsetx);
+	for (i = 0; i < sleepnum; i++)
+	{
+		ctx.fillText(sleepstart[i], (300-2*leftx)*barstart[i], offsetx-10);
+	}
+    //ctx.fillText(sleepstart[i], (300-2*leftx)*barstart[i], offsetx-10);
 	//alert("sb");
 </script>

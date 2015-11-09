@@ -206,7 +206,7 @@
 	
 	var mycanvas = document.getElementById("mycanvas");
     var context = mycanvas.getContext("2d");
-	var offsetx = 25;
+	var offsetx = 30;
 	var leftx = 10;
 	context.lineWidth=1;
 	context.beginPath();
@@ -242,6 +242,7 @@
 	for (i = 0; i < sleepnum; i++)
 	{
 		ctx.fillText(sleepstart[i], (300-2*leftx)*barstart[i], offsetx-10);
+		ctx.fillText(sleepend[i], (300-2*leftx)*barend[i], offsetx+28);
 	}
     //ctx.fillText(sleepstart[i], (300-2*leftx)*barstart[i], offsetx-10);
 	//alert("sb");

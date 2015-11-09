@@ -206,13 +206,14 @@
 	
 	var mycanvas = document.getElementById("mycanvas");
     var context = mycanvas.getContext("2d");
+	var offsetx = 10;
 	context.lineWidth=1;
 	context.beginPath();
-	context.moveTo(0,10);
-	context.lineTo(300,10);
-	context.lineTo(300,20);
-	context.lineTo(0,20);
-	context.lineTo(0,10);
+	context.moveTo(0,offsetx);
+	context.lineTo(300,offsetx);
+	context.lineTo(300,offsetx+10);
+	context.lineTo(0,offsetx+10);
+	context.lineTo(0,offsetx);
 	context.stroke();
 	context.closePath();
 	
@@ -222,15 +223,15 @@
 	context.fillStyle="#68EE68";
 	for (i = 0; i < sleepnum; i++)
 	{
-		context.fillRect(300*barstart[i],11,300*barend[i]-300*barstart[i],8);
+		context.fillRect(300*barstart[i],offsetx+1,300*barend[i]-300*barstart[i],8);
 	}
 	for (i = 0; i < sleepnum; i++)
 	{
-		context.moveTo(300*barstart[i],10);
-		context.lineTo(300*barstart[i],2);
-		context.moveTo(300*barend[i],20);
-		context.lineTo(300*barend[i],28);
+		context.moveTo(300*barstart[i],offsetx);
+		context.lineTo(300*barstart[i],offsetx-8);
+		context.moveTo(300*barend[i],offsetx+10);
+		context.lineTo(300*barend[i],offsetx+8);
 	}
 	context.stroke();
-	context.closePath(300*barstart[i],0);
+	context.closePath(0,0);
 </script>

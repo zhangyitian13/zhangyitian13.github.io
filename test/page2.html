@@ -1,0 +1,374 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" >
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+		<title>展示页面</title>
+		<script language="JavaScript" src="js/jquery.js">
+		</script>
+		<script type="text/javascript" src="js/clock2.js"></script>
+		<script type="text/javascript" src="js/jQueryRotate.2.2.js"></script>
+		<link rel="stylesheet" href="js/jquery.raty.css">
+		<link href="css/clock.css" rel="stylesheet" type="text/css" />
+		<style>
+			html{
+			height: 100%;
+			}
+			body{
+			height: 99%;
+			FILTER: progid:DXImageTransform.Microsoft.Gradient(gradientType=0,startColorStr=##15A216,endColorStr=#fafafa); /*IE*/ 
+			background:-moz-linear-gradient(top,#15A216,#fafafa);/*火狐*/ 
+			background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#FFFF6F), to(#FFFF93));/*谷歌*/ 
+			background-image: -webkit-gradient(linear,left bottom,left top,color-start(0, #15A216),color-stop(1, #fafafa));/* Safari & Chrome*/ 
+			filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#15A216', endColorstr='#fafafa'); /*IE6 & IE7*/ 
+			-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#15A216', endColorstr='#fafafa')"; /* IE8 */ 
+			}
+			.bigcontainer{
+			width: 100%;
+			height: 100%;
+			}
+			#box1{
+			
+			width: 100%;
+			height: 6.25%;
+			position: relative;
+			overflow:hidden;
+			}
+			#box2{
+			
+			width: 100%;
+			height: 18.75%;
+			overflow:hidden;
+			}
+			#box3{
+			
+			width: 100%;
+			height: 25%;
+			overflow:hidden;
+			}
+			#box4{
+			
+			width: 100%;
+			height: 37.5%;
+			overflow:hidden;
+			}
+			#box5{
+			
+			width: 100%;
+			height: 12.5%;
+			overflow:hidden;
+			}
+			#leftbutton{
+			
+			width: 11.1%;
+			height: 100%;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			}
+			#middlebar{
+			
+			width: 77.7%;
+			height: 100%;
+			position: absolute;
+			top: 0%;
+			left: 11.1%;
+			}
+			#rightbutton{
+			
+			width: 11.1%;
+			height: 100%;
+			position: absolute;
+			top: 0%;
+			left: 88.8%;
+			}
+			#namediv{
+			width:40%;
+			position: relative;
+			left:55%;
+			top:-60%;
+			}
+			#rijibencontainer{
+			width:100%;
+			height:100%;
+			}
+			#img1{
+			width:13%;
+			height:20%;
+			position:relative;
+			top:-90%;
+			left:10%;
+			}
+			#img2{
+			width:13%;
+			height:20%;
+			position:relative;
+			top:-85%;
+			left:10%;
+			}
+			#img3{
+			width:13%;
+			height:20%;
+			position:relative;
+			top:-80%;
+			left:10%;
+			}
+			#img4{
+			width:13%;
+			height:20%;
+			position:relative;
+			top:-130%;
+			left:55%;
+			}
+			#img5{
+			width:13%;
+			height:20%;
+			position:relative;
+			top:-125%;
+			left:55%;
+			}
+			#text1{
+			width:25%;
+			height:20%;
+			position:relative;
+			top:-185%;
+			left:25%;
+			transform:rotate(5deg);
+			-ms-transform:rotate(5deg);
+			-moz-transform:rotate(5deg); 
+			-webkit-transform:rotate(5deg); 
+			-o-transform:rotate(5deg); 
+			}
+			#text2{
+			width:25%;
+			height:20%;
+			position:relative;
+			top:-180%;
+			left:25%;
+			transform:rotate(5deg);
+			-ms-transform:rotate(5deg);
+			-moz-transform:rotate(5deg); 
+			-webkit-transform:rotate(5deg); 
+			-o-transform:rotate(5deg); 
+			}
+			#text3{
+			width:25%;
+			height:20%;
+			position:relative;
+			top:-175%;
+			left:25%;
+			transform:rotate(5deg);
+			-ms-transform:rotate(5deg);
+			-moz-transform:rotate(5deg); 
+			-webkit-transform:rotate(5deg); 
+			-o-transform:rotate(5deg); 
+			}
+			#text4{
+			width:25%;
+			height:20%;
+			position:relative;
+			top:-230%;
+			left:70%;
+			transform:rotate(-5deg);
+			-ms-transform:rotate(-5deg);
+			-moz-transform:rotate(-5deg); 
+			-webkit-transform:rotate(-5deg); 
+			-o-transform:rotate(-5deg); 
+			}
+			#text5{
+			width:25%;
+			height:20%;
+			position:relative;
+			top:-225%;
+			left:70%;
+			transform:rotate(-5deg);
+			-ms-transform:rotate(-5deg);
+			-moz-transform:rotate(-5deg); 
+			-webkit-transform:rotate(-5deg); 
+			-o-transform:rotate(-5deg); 
+			}
+			#button1{
+			width:20%;
+			height:50%;
+			position:relative;
+			top:25%;
+			left:10%;
+			}
+			#button2{
+			width:20%;
+			height:50%;
+			position:relative;
+			top:-25%;
+			left:30%;
+			}
+			#button3{
+			width:10%;
+			height:50%;
+			position:relative;
+			top:-75%;
+			left:75%;
+			}
+			.test1{
+			padding: 0;
+			margin: 0;
+			font-size: 4vw;
+			position: relative;
+			left: 35%;
+			}
+			.test2{
+			padding: 0;
+			margin: 0;
+			font-size: 4vw;
+			position: relative;
+			left: 0%;
+			}
+			.test3{
+			padding: 0;
+			margin: 0;
+			font-size: 5.5vw;
+			position: relative;
+			left: 45%;
+			}
+			.leftarrow{
+			width:100%;
+			height: 100%;
+			}
+			
+			.tou{
+			width:100%;
+			height:100%;
+			}
+			.toucontainer{
+			width:27.77%;
+			height:83.3%;
+			position:relative;
+			top:0%;
+			left:25%;
+			}
+			.starbar{
+			width:60%;
+			height:40%;
+			position:relative;
+			top:0%;
+			left:30%;
+			overflow:hidden;
+			}
+			.mycanvas{
+			width:90%;
+			position:relative;
+			left:5%;
+			top:0%;
+			}
+			.canvasdiv{
+			width:100%;
+			height:60%;
+			position:relative;
+			top:-20%;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class = "bigcontainer">
+			<div id = "box1">
+				<div id = "leftbutton">
+					<img src="src/leftarrow.png" class = "leftarrow"></img>
+				</div>
+				<div id = "middlebar">
+					<p class="test3">11.8</p>
+				</div>
+				<div id = "rightbutton">
+					<img src="src/rightarrow.png" class = "leftarrow"></img>
+				</div>
+			</div>
+			<div id = "box2">
+				<div id = "toucontainer" class = "toucontainer">
+					<img src="src/tou.jpg" class = "tou"></img>
+				</div>
+				<div id = "namediv">
+					<p class="test2">萌杰Lv10</p>
+				</div>
+			</div>
+			<div id = "box3">
+				<p class="test1">你的得分：70</p>
+				<div id = "myclock"></div>
+			</div>
+			<div id = "box4">
+				<div id = "rijibencontainer">
+					<img src = "src/rijiben.png" class = "tou"></img>
+				</div>
+				<div id = "img1">
+					<img src = "src/circle.png" class = "tou"></img>
+				</div>
+				<div id = "img2">
+					<img src = "src/circle.png" class = "tou"></img>
+				</div>
+				<div id = "img3">
+					<img src = "src/circle.png" class = "tou"></img>
+				</div>
+				<div id = "img4">
+					<img src = "src/circle.png" class = "tou"></img>
+				</div>
+				<div id = "img5">
+					<img src = "src/circle.png" class = "tou"></img>
+				</div>
+				<div id = "text1">
+					<p class = "test2">作息 23:00-7:00</p>
+				</div>
+				<div id = "text2">
+					<p class = "test2">总时长 8小时</p>
+				</div>
+				<div id = "text3">
+					<p class = "test2">翻身 48次</p>
+				</div>
+				<div id = "text4">
+					<p class = "test2">醒来 66次</p>
+				</div>
+				<div id = "text5">
+					<p class = "test2">总分 7.0</p>
+				</div>
+			</div>
+			<div id = "box5">
+				<div id = "button1">
+					<img src = "src/zhoushuimian.png" class = "tou"></img>
+				</div>
+				<div id = "button2">
+					<img src = "src/yueshuimian.png" class = "tou"></img>
+				</div>
+				<div id = "button3">
+					<img src = "src/fanhui.jpg" class = "tou"></img>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script>
+	var config = {        		
+		/*the name of the div containing the clock*/
+		divId: "myclock",        		        
+		/*set to false if you don't want to use the second hand*/		
+		useSecondHand: "true",        		
+		/*width and height of the clock*/
+		clockWidthAndHeight: "100",      		
+		/*location of the images*/
+		clockFaceImg: "src/clockBg.png",
+		hourHandImg: "src/hourHand.png",
+		minuteHandImg: "src/minuteHand.png",
+		secondHandImg: "src/secondHand.png", 
+		/*location of the high res images for retina display*/
+		clockFaceHighResImg: "src/clockBgHighRes.png",
+		hourHandHighResImg: "src/hourHandHighRes.png",
+		minuteHandHighResImg: "src/minuteHandHighRes.png",
+		secondHandHighResImg: "src/secondHandHighRes.png",
+		/*Set true to make hand move at steady speed*/
+		smoothRotation: "false",        		
+		/*speed of the second hand. Lower is faster. */
+		/*Must be under 1000. */
+		/*If smooth rotation is true, this does nothing.*/
+		secondHandSpeed: "100"        		        		
+	};        	
+	var myhtml5Clock = new html5Clock(config);    
+	
+	
+</script>

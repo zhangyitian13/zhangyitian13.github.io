@@ -1,0 +1,30 @@
+.tit_top_big
+{
+	height:100px;
+}
+.tit_top_div{
+    position: relative;
+    top:10px;
+    margin: auto;
+    width: 95%;
+}
+.tit_top_li{
+    position: relative;
+    left:50px;
+    float:left;
+}
+#circle_chart{
+    height:300px;
+}
+.con{
+    height:100px;
+}
+.con_div{
+    float:left;
+    width: 43%;
+    margin-left: 5%;
+    margin-top: 20px;
+}
+.bottom_button{
+    margin-top: 20px;
+}

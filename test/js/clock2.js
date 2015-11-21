@@ -29,8 +29,7 @@ html5Clock = function(config){
 	
 	
 	//set clock holder css
-	clockDiv.css({"height":clockWidthHeight + "px", "width":clockWidthHeight + "px", "position":"relative"});
-	
+	clockDiv.css({"height":clockWidthHeight + "px", "width":clockWidthHeight + "px", "position":"relative", "margin":"0 auto"});
 	//add graphical elements 
 	retina = window.devicePixelRatio > 1;//check if retina
 	

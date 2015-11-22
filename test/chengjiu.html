@@ -254,6 +254,7 @@
 </html>
 <script language = "javascript">
 	var obj1 = [{imgsrc:'src/shu.jpg',achievename:'外星飞机王',achievetext:'持续撸管6小时'},{imgsrc:'src/shu.jpg',achievename:'外星飞机霸',achievetext:'持续撸管8小时'},{imgsrc:'src/shu.jpg',achievename:'外星飞机帝',achievetext:'持续撸管10小时'},{imgsrc:'src/shu.jpg',achievename:'外星飞机帝',achievetext:'持续撸管12小时'},{imgsrc:'src/shu.jpg',achievename:'萌杰',achievetext:'撸出血'}]
+	var obj2 = {username:'萌杰',userlevel:'10',text1:'19/20',text2:'5/5',text3:'5/6',text4:'9/9',imgsrc:'src/tou.jpg'};
 	function mode1(){
 		document.getElementById('achieve1').style.textShadow = "1px 0 0 #FFD700, 0 1px 0 #FFD700, 0 -1px 0 #FFD700, -1px 0 0 #FFD700, 1px 0 1px #FFD700, 0 1px 1px #FFD700, 0 -1px 1px #FFD700, -1px 0 1px #FFD700";
 		document.getElementById('achieve2').style.textShadow = "";
@@ -270,6 +271,25 @@
 		document.getElementById('achieve1').style.textShadow = "";
 	}
 	mode1();
+	getinfo(obj2);//you should delete this line after your work\n
+	
+	//getmode1(obj1);//just for fun\n
+	
+	//you should modify these '???'\n
+	//$.ajax({
+	//		url: '???',
+	//		type: 'POST',
+	//		datatype: 'json',
+	//		data: {
+	//			number: 0,
+	//			csrfmiddlewaretoken: '???'
+	//		},
+	//		success: getinfo(),
+	//		error: function (xhr, errmsg, err) {
+	//			alert('debug2');
+	//			alert(xhr.status + ': ' + xhr.responseText);
+	//		}
+	//	})
 	function getmode1(json) {
 		document.getElementById('box3').innerHTML="";
         for (i in json){
@@ -279,31 +299,74 @@
             $('#box3').append(str);
         }
     }
+	function getinfo(json){
+		document.getElementById('namediv').innerHTML="";
+		str = "<p class='test2'>"+json.username+"--Lv"+json.userlevel+"</p><p class='test2'>已完成"+json.text1+"</p>"
+		$('#namediv').append(str);
+		document.getElementById('achieve1').innerHTML="";
+		str = "<p class='test2'>运动成就</p><p class='test2'>"+json.text2+"</p>";
+		$('#achieve1').append(str);
+		document.getElementById('achieve2').innerHTML="";
+		str = "<p class='test2'>睡眠成就</p><p class='test2'>"+json.text3+"</p>";
+		$('#achieve2').append(str);
+		document.getElementById('achieve3').innerHTML="";
+		str = "<p class='test2'>堕落成就</p><p class='test2'>"+json.text4+"</p>";
+		$('#achieve3').append(str);
+		document.getElementById('toucontainer').innerHTML="";
+		str = "<img src="+json.imgsrc+" class = 'tou'/>";
+		$('#toucontainer').append(str);
+	}
+	$('#achieve1').click(function(){
+		mode1();
+		$.ajax({
+			url: '???',
+			type: 'POST',
+			datatype: 'json',
+			data: {
+				number: 1,
+				csrfmiddlewaretoken: '???'
+			},
+			success: getmode1(),
+			error: function (xhr, errmsg, err) {
+				alert('debug1');
+				alert(xhr.status + ': ' + xhr.responseText);
+			}
+		})
+	})
+	$('#achieve2').click(function(){
+		mode2();
+		$.ajax({
+			url: '???',
+			type: 'POST',
+			datatype: 'json',
+			data: {
+				number: 2,
+				csrfmiddlewaretoken: '???'
+			},
+			success: getmode1(),
+			error: function (xhr, errmsg, err) {
+				alert('debug2');
+				alert(xhr.status + ': ' + xhr.responseText);
+			}
+		})
+	})
+	$('#achieve3').click(function(){
+		mode3();
+		$.ajax({
+			url: '???',
+			type: 'POST',
+			datatype: 'json',
+			data: {
+				number: 3,
+				csrfmiddlewaretoken: '???'
+			},
+			success: getmode1(),
+			error: function (xhr, errmsg, err) {
+				alert('debug3');
+				alert(xhr.status + ': ' + xhr.responseText);
+			}
+		})
+	})
 	
-	
-	//$.ajax({
-    //        url: '???',
-    //        type: 'POST',
-    //        datatype: 'json',
-    //        data: {
-    //            number: 1,
-    //            csrfmiddlewaretoken: '???'
-    //        },
-    //        success: function (json) {
-    //            for (i in json){
-    //                str = "<div class='row' style='border-bottom-color:silver; border-bottom-style:solid; height:180px; padding:px;'>"
-    //                +"<div class='col-lg-2' style='height:160px; padding:15px; left:15px;'><div class='img-circle'><img src='/static/" + json[i].image
-    //                + " ' class='circle' style='width:80px; height:80px;'></div><div style='top:20px;'><h4>" + json[i].name
-    //                + "</h4></div></div><div class='col-lg-10' style='height:160px; padding:15px;'>"
-	//	   + "<textarea name='VideoDiscribe' rows='5' disabled style='width:100%; background-color:white;'>"+ json[i].content
-    //                + "</textarea><p>#" + json[i].layer + "&nbsp;&nbsp;&nbsp;&nbsp;" + json[i].time +  "</p></div></div>"
-    //                $('#comment-area').append(str)
-    //                $('#input-comment').val('')
-    //            }
-    //        },
-    //        error: function (xhr, errmsg, err) {
-    //            alert(xhr.status + ': ' + xhr.responseText);
-    //        }
-    //    })
 </script>
 

@@ -6,9 +6,6 @@
 		<title>展示页面</title>
 		<script language="JavaScript" src="js/jquery.js">
 		</script>
-		<script language="JavaScript" src="js/jquery.raty.js">
-		</script>
-		<link rel="stylesheet" href="js/jquery.raty.css">
 		<style>
 			html{
 			height: 100%;
@@ -256,6 +253,7 @@
 	</body>
 </html>
 <script language = "javascript">
+	var obj1 = [{imgsrc:'src/shu.jpg',achievename:'外星飞机王',achievetext:'持续撸管6小时'},{imgsrc:'src/shu.jpg',achievename:'外星飞机霸',achievetext:'持续撸管8小时'},{imgsrc:'src/shu.jpg',achievename:'外星飞机帝',achievetext:'持续撸管10小时'},{imgsrc:'src/shu.jpg',achievename:'外星飞机帝',achievetext:'持续撸管12小时'},{imgsrc:'src/shu.jpg',achievename:'萌杰',achievetext:'撸出血'}]
 	function mode1(){
 		document.getElementById('achieve1').style.textShadow = "1px 0 0 #FFD700, 0 1px 0 #FFD700, 0 -1px 0 #FFD700, -1px 0 0 #FFD700, 1px 0 1px #FFD700, 0 1px 1px #FFD700, 0 -1px 1px #FFD700, -1px 0 1px #FFD700";
 		document.getElementById('achieve2').style.textShadow = "";
@@ -272,5 +270,40 @@
 		document.getElementById('achieve1').style.textShadow = "";
 	}
 	mode1();
+	function getmode1(json) {
+		document.getElementById('box3').innerHTML="";
+        for (i in json){
+			str = "<div class = 'divchengjiu'><div class = 'divchengjiuimg'><img src = "+json[i].imgsrc
+			+" class = 'achieveimg'/></div><div class = 'div_text_1'><p class = 'test4'>"+json[i].achievename
+			+"</p></div><div class = 'div_text_2'><p class = 'test5'>"+json[i].achievetext+"</p></div></div>";
+            $('#box3').append(str);
+        }
+    }
+	
+	
+	//$.ajax({
+    //        url: '???',
+    //        type: 'POST',
+    //        datatype: 'json',
+    //        data: {
+    //            number: 1,
+    //            csrfmiddlewaretoken: '???'
+    //        },
+    //        success: function (json) {
+    //            for (i in json){
+    //                str = "<div class='row' style='border-bottom-color:silver; border-bottom-style:solid; height:180px; padding:px;'>"
+    //                +"<div class='col-lg-2' style='height:160px; padding:15px; left:15px;'><div class='img-circle'><img src='/static/" + json[i].image
+    //                + " ' class='circle' style='width:80px; height:80px;'></div><div style='top:20px;'><h4>" + json[i].name
+    //                + "</h4></div></div><div class='col-lg-10' style='height:160px; padding:15px;'>"
+	//	   + "<textarea name='VideoDiscribe' rows='5' disabled style='width:100%; background-color:white;'>"+ json[i].content
+    //                + "</textarea><p>#" + json[i].layer + "&nbsp;&nbsp;&nbsp;&nbsp;" + json[i].time +  "</p></div></div>"
+    //                $('#comment-area').append(str)
+    //                $('#input-comment').val('')
+    //            }
+    //        },
+    //        error: function (xhr, errmsg, err) {
+    //            alert(xhr.status + ': ' + xhr.responseText);
+    //        }
+    //    })
 </script>
 

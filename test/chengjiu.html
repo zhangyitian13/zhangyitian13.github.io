@@ -144,10 +144,6 @@
 			position:relative;
 			top:7%;
 			left:1%;
-			text-shadow: 1px 0 0 #8B4513, 0 1px 0 #8B4513, 
-			0 -1px 0 #8B4513, -1px 0 0 #8B4513, 
-			1px 0 1px #8B4513, 0 1px 1px #8B4513, 
-			0 -1px 1px #8B4513, -1px 0 1px #8B4513;
 			}
 			.divachieve2{
 			width:30%;
@@ -259,4 +255,22 @@
 		</div>
 	</body>
 </html>
+<script language = "javascript">
+	function mode1(){
+		document.getElementById('achieve1').style.textShadow = "1px 0 0 #FFD700, 0 1px 0 #FFD700, 0 -1px 0 #FFD700, -1px 0 0 #FFD700, 1px 0 1px #FFD700, 0 1px 1px #FFD700, 0 -1px 1px #FFD700, -1px 0 1px #FFD700";
+		document.getElementById('achieve2').style.textShadow = "";
+		document.getElementById('achieve3').style.textShadow = "";
+	}
+	function mode2(){
+		document.getElementById('achieve2').style.textShadow = "1px 0 0 #FFD700, 0 1px 0 #FFD700, 0 -1px 0 #FFD700, -1px 0 0 #FFD700, 1px 0 1px #FFD700, 0 1px 1px #FFD700, 0 -1px 1px #FFD700, -1px 0 1px #FFD700";
+		document.getElementById('achieve1').style.textShadow = "";
+		document.getElementById('achieve3').style.textShadow = "";
+	}
+	function mode3(){
+		document.getElementById('achieve3').style.textShadow = "1px 0 0 #FFD700, 0 1px 0 #FFD700, 0 -1px 0 #FFD700, -1px 0 0 #FFD700, 1px 0 1px #FFD700, 0 1px 1px #FFD700, 0 -1px 1px #FFD700, -1px 0 1px #FFD700";
+		document.getElementById('achieve2').style.textShadow = "";
+		document.getElementById('achieve1').style.textShadow = "";
+	}
+	mode1();
+</script>
 

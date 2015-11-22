@@ -38,14 +38,18 @@
 			#box3{
 			
 			width: 100%;
-			height: 33.5%;
+			height: 34.5%;
 			overflow:hidden;
 			}
 			#box4{
 			
-			width: 100%;
-			height: 29%;
+			width: 92%;
+			height: 21%;
 			overflow:hidden;
+			-webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+			border:solid 1px;
+			padding:3%;
 			}
 			#box5{
 			
@@ -83,105 +87,7 @@
 			left:55%;
 			top:-60%;
 			}
-			#rijibencontainer{
-			width:100%;
-			height:100%;
-			}
-			#img1{
-			width:13%;
-			height:20%;
-			position:relative;
-			top:-90%;
-			left:10%;
-			}
-			#img2{
-			width:13%;
-			height:20%;
-			position:relative;
-			top:-85%;
-			left:10%;
-			}
-			#img3{
-			width:13%;
-			height:20%;
-			position:relative;
-			top:-80%;
-			left:10%;
-			}
-			#img4{
-			width:13%;
-			height:20%;
-			position:relative;
-			top:-130%;
-			left:55%;
-			}
-			#img5{
-			width:13%;
-			height:20%;
-			position:relative;
-			top:-125%;
-			left:55%;
-			}
-			#text1{
-			width:25%;
-			height:20%;
-			position:relative;
-			top:-185%;
-			left:25%;
-			transform:rotate(5deg);
-			-ms-transform:rotate(5deg);
-			-moz-transform:rotate(5deg); 
-			-webkit-transform:rotate(5deg); 
-			-o-transform:rotate(5deg); 
-			}
-			#text2{
-			width:25%;
-			height:20%;
-			position:relative;
-			top:-180%;
-			left:25%;
-			transform:rotate(5deg);
-			-ms-transform:rotate(5deg);
-			-moz-transform:rotate(5deg); 
-			-webkit-transform:rotate(5deg); 
-			-o-transform:rotate(5deg); 
-			}
-			#text3{
-			width:25%;
-			height:20%;
-			position:relative;
-			top:-175%;
-			left:25%;
-			transform:rotate(5deg);
-			-ms-transform:rotate(5deg);
-			-moz-transform:rotate(5deg); 
-			-webkit-transform:rotate(5deg); 
-			-o-transform:rotate(5deg); 
-			}
-			#text4{
-			width:25%;
-			height:20%;
-			position:relative;
-			top:-230%;
-			left:70%;
-			transform:rotate(-5deg);
-			-ms-transform:rotate(-5deg);
-			-moz-transform:rotate(-5deg); 
-			-webkit-transform:rotate(-5deg); 
-			-o-transform:rotate(-5deg); 
-			}
-			#text5{
-			width:25%;
-			height:20%;
-			position:relative;
-			top:-225%;
-			left:70%;
-			transform:rotate(-5deg);
-			-ms-transform:rotate(-5deg);
-			-moz-transform:rotate(-5deg); 
-			-webkit-transform:rotate(-5deg); 
-			-o-transform:rotate(-5deg); 
-			}
+			
 			#button1{
 			width:20%;
 			height:50%;
@@ -224,6 +130,13 @@
 			position: relative;
 			left: 45%;
 			}
+			.test4{
+			padding: 0;
+			margin: 0;
+			font-size: 5.5vw;
+			position: relative;
+			left: 10%;
+			}
 			.leftarrow{
 			width:100%;
 			height: 100%;
@@ -232,6 +145,10 @@
 			.tou{
 			width:100%;
 			height:100%;
+			}
+			.touxiang{
+			height:100%;
+			width:auto;
 			}
 			.toucontainer{
 			width:27.77%;
@@ -264,25 +181,25 @@
 		<div class = "bigcontainer">
 			<div id = "box1">
 				<div id = "leftbutton">
-					<img src="src/leftarrow.png" class = "leftarrow"></img>
+					<img src="src/leftarrow.png" class = "leftarrow"/>
 				</div>
 				<div id = "middlebar">
 					<p class="test3">11.8</p>
 				</div>
 				<div id = "rightbutton">
-					<img src="src/rightarrow.png" class = "leftarrow"></img>
+					<img src="src/rightarrow.png" class = "leftarrow"/>
 				</div>
 			</div>
 			<div id = "box2">
 				<div id = "toucontainer" class = "toucontainer">
-					<img src="src/tou.jpg" class = "tou"></img>
+					<img src="src/tou.jpg" class = "touxiang"/>
 				</div>
 				<div id = "namediv">
 					<p class="test2">萌杰Lv10</p>
 				</div>
 			</div>
 			<div id = "box3">
-				<p class="test1">你的得分：70</p>
+				<p class="test1">你的睡眠示意图</p>
 				<div id = "myclock"></div>
 				<div id = "mycanvasdiv" class = "mycanvasdiv">
 					<canvas id = "mycanvas" width = "130" height = "130">
@@ -290,49 +207,21 @@
 				</div>
 			</div>
 			<div id = "box4">
-				<div id = "rijibencontainer">
-					<img src = "src/rijiben.png" class = "tou"></img>
-				</div>
-				<div id = "img1">
-					<img src = "src/circle.png" class = "tou"></img>
-				</div>
-				<div id = "img2">
-					<img src = "src/circle.png" class = "tou"></img>
-				</div>
-				<div id = "img3">
-					<img src = "src/circle.png" class = "tou"></img>
-				</div>
-				<div id = "img4">
-					<img src = "src/circle.png" class = "tou"></img>
-				</div>
-				<div id = "img5">
-					<img src = "src/circle.png" class = "tou"></img>
-				</div>
-				<div id = "text1">
-					<p class = "test2">作息 23:00-7:00</p>
-				</div>
-				<div id = "text2">
-					<p class = "test2">总时长 8小时</p>
-				</div>
-				<div id = "text3">
-					<p class = "test2">翻身 48次</p>
-				</div>
-				<div id = "text4">
-					<p class = "test2">醒来 66次</p>
-				</div>
-				<div id = "text5">
-					<p class = "test2">总分 7.0</p>
-				</div>
+				<p class = "test4">平均作息：23:00 ~ 9:00</p>
+				<p class = "test4">平均睡眠时长：10h</p>
+				<p class = "test4">深睡眠比例：30%</p>
+				<p class = "test4">平均醒来次数：4次</p>
+				<p class = "test4">总评分：60</p>
 			</div>
 			<div id = "box5">
 				<div id = "button1">
-					<img src = "src/zhoushuimian.png" class = "tou"></img>
+					<img src = "src/zhoushuimian.png" class = "tou"/>
 				</div>
 				<div id = "button2">
-					<img src = "src/yueshuimian.png" class = "tou"></img>
+					<img src = "src/yueshuimian.png" class = "tou"/>
 				</div>
 				<div id = "button3">
-					<img src = "src/fanhui.jpg" class = "tou"></img>
+					<img src = "src/fanhui.jpg" class = "tou"/>
 				</div>
 			</div>
 		</div>
@@ -340,6 +229,70 @@
 </html>
 
 <script>
+	var obj = {username:'萌杰',userlevel:'10',score:'60',imgsrc:'src/tou.jpg',text1:'23:30',text2:'9:00',text3:'10h 30min',text4:'30%',text5:'4',time1:'23.5',time2:'6'};
+	//$.ajax({
+	//		url: '???',
+	//		type: 'POST',
+	//		datatype: 'json',
+	//		data: {
+	//			number: 0,
+	//			csrfmiddlewaretoken: '???'
+	//		},
+	//		success: getinfo(),
+	//		error: function (xhr, errmsg, err) {
+	//			alert('debug2');
+	//			alert(xhr.status + ': ' + xhr.responseText);
+	//		}
+	//	})
+	function getinfo(json){
+		document.getElementById('namediv').innerHTML="";
+		str = "<p class='test2'>"+json.username+"--Lv"+json.userlevel+"</p>"
+		$('#namediv').append(str);
+		document.getElementById('toucontainer').innerHTML="";
+		str = "<img src="+json.imgsrc+" class = 'touxiang'/>";
+		$('#toucontainer').append(str);
+		document.getElementById('box4').innerHTML="";
+		str = "<p class = 'test4'>平均作息："+json.text1+" ~ "+json.text2+"</p><p class = 'test4'>平均睡眠时长："+json.text3+"</p><p class = 'test4'>深睡眠比例："+json.text4+"</p><p class = 'test4'>平均醒来次数："+json.text5+"次</p><p class = 'test4'>总评分："+json.score+"</p>";
+		$('#box4').append(str);
+		var mycanvas = document.getElementById("mycanvas");
+		var context = mycanvas.getContext("2d");
+		context.beginPath();
+		context.arc(65,65,63,0,2*Math.PI,1);
+		context.closePath();
+		context.strokeStyle = 'black';
+		context.lineWidth = 2;
+		context.stroke();
+		context.beginPath();
+		context.arc(65,65,59,0,2*Math.PI,1);
+		context.closePath();
+		context.strokeStyle = 'black';
+		context.lineWidth = 2;
+		context.stroke();
+		context.beginPath();
+		var x1;
+		var x2;
+		if (json.time1>=12)
+			x1 = (json.time1/6 - 2.5);
+		else if (json.time1<12)
+			x1 = (json.time1/6 - 0.5);
+		if (json.time2>=12)
+			x2 = (json.time2/6 - 2.5);
+		else if (json.time2<12)
+			x2 = (json.time2/6 - 0.5);
+		context.arc(65,65,61,x1*Math.PI,x2*Math.PI,false);
+		context.strokeStyle = '#32CD32';
+		context.lineWidth = 4;
+		context.stroke();
+		//context.lineWidth=1;
+		//context.beginPath();
+		//context.moveTo(2,2);
+		//context.lineTo(128,2);
+		//context.lineTo(128,128);
+		//context.lineTo(2,128);
+		//context.lineTo(2,2);
+		//context.stroke();
+		//context.closePath();
+	}
 	var config = {        		
 		/*the name of the div containing the clock*/
 		divId: "myclock",        		        
@@ -366,25 +319,25 @@
 	};        	
 	var myhtml5Clock = new html5Clock(config);    
 	
-	var mycanvas = document.getElementById("mycanvas");
-    var context = mycanvas.getContext("2d");
-	context.beginPath();
-    context.arc(65,65,63,0,2*Math.PI,1);
-    context.closePath();
-    context.strokeStyle = 'black';
-    context.lineWidth = 2;
-    context.stroke();
-	context.beginPath();
-    context.arc(65,65,59,0,2*Math.PI,1);
-    context.closePath();
-    context.strokeStyle = 'black';
-    context.lineWidth = 2;
-    context.stroke();
-	context.beginPath();
-    context.arc(65,65,61,0.5*Math.PI,1.33*Math.PI,true);
-    context.strokeStyle = '#32CD32';
-    context.lineWidth = 4;
-    context.stroke();
+	//var mycanvas = document.getElementById("mycanvas");
+    //var context = mycanvas.getContext("2d");
+	//context.beginPath();
+    //context.arc(65,65,63,0,2*Math.PI,1);
+    //context.closePath();
+    //context.strokeStyle = 'black';
+    //context.lineWidth = 2;
+    //context.stroke();
+	//context.beginPath();
+    //context.arc(65,65,59,0,2*Math.PI,1);
+    //context.closePath();
+    //context.strokeStyle = 'black';
+    //context.lineWidth = 2;
+    //context.stroke();
+	//context.beginPath();
+    //context.arc(65,65,61,0.5*Math.PI,1.33*Math.PI,true);
+    //context.strokeStyle = '#32CD32';
+    //context.lineWidth = 4;
+    //context.stroke();
 	//context.lineWidth=1;
 	//context.beginPath();
 	//context.moveTo(2,2);

@@ -554,14 +554,18 @@
 		document.getElementById('lightcontainer').style.left = 6*temp+"%";
 	}
 	function worddisappear(){
+	var dom
 		temp+=2.5;
 		if (temp >= 100){
-			$("#divshow").remove();
+			dom = document.getElementById("divshow");
+			dom.parentNode.removeChild(dom);
 			temp = 94;
 			clearInterval(m_loop2);
 			clearInterval(m_loop7);
-			$("#divword").remove();
-			$("#divlight").remove();
+			dom = document.getElementById("divword");
+			dom.parentNode.removeChild(dom);
+			dom = document.getElementById("divlight");
+			dom.parentNode.removeChild(dom);
 			return;
 		}
 		document.getElementById('divshow').style.opacity = 1 - temp/100;

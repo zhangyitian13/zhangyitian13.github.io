@@ -412,5 +412,21 @@
 		ctx.fillText(sleepend[i], (300-2*leftx)*barend[i], offsetx+28);
 	}
 	
+	document.getElementById('mycanvas').onclick = function(e){
+		for (i = 0; i < sleepnum; i++)
+		{
+			if (e.x >= (300-2*leftx)*barstart[i]+leftx-4 && e.x <= (300-2*leftx)*barend[i]+leftx+4)
+				getsleepinfo(i);
+		}
+	}
+	function getsleepinfo(i){
+		document.getElementById("text1").remove();
+		document.getElementById("text2").remove();
+		document.getElementById("text3").remove();
+		document.getElementById("text4").remove();
+		document.getElementById("text5").remove();
+		str = "<div id = 'text1'><p class = 'test2'>作息"+sleepstart[i]+"-"+sleepend[i]+"</p></div><div id = 'text2'><p class = 'test2'>总时长 8小时</p></div><div id = 'text3'><p class = 'test2'>翻身 48次</p></div><div id = 'text4'><p class = 'test2'>醒来 66次</p></div><div id = 'text5'><p class = 'test2'>总分 7.0</p></div>";
+		$("#box4").append(str);
+	}
 	
 </script>

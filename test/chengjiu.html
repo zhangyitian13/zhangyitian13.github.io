@@ -326,6 +326,7 @@
 	var m_loop;
 	var m_loop2;
 	var m_loop3;
+	var m_loop4;
 	var temp = 94;
 	var temp2 = 0;
 	var obj1 = [{imgsrc:'src/shu.jpg',achievename:'外星飞机王',achievetext:'持续撸管6小时'},{imgsrc:'src/shu.jpg',achievename:'外星飞机霸',achievetext:'持续撸管8小时'},{imgsrc:'src/shu.jpg',achievename:'外星飞机帝',achievetext:'持续撸管10小时'},{imgsrc:'src/shu.jpg',achievename:'外星飞机帝',achievetext:'持续撸管12小时'},{imgsrc:'src/jiangbei.jpg',achievename:'萌杰',achievetext:'撸出血'}]
@@ -443,15 +444,18 @@
 		})
 	})
 	function showachievement(){
-		document.getElementById("box3").innerHTML+= "<div id = 'divshow' class = 'divshow'><div id = 'divshowimg' class = 'divshowimg'><img src = 'src/chengjiu/07.jpg' class = 'achieveimg2'/></div></div>";
-		document.getElementById("box3").innerHTML+= "<div id = 'divword' class = 'divword'><p class = 'test6'>获得成就：大沙比</p></div>"
-		document.getElementById("divshow").innerHTML += "<div id = 'divbackimg1' class = 'divbackimg1'><img src = 'src/test1.png' class = 'backimg'/></div>";
-		document.getElementById("divshow").innerHTML += "<div id = 'divbackimg2' class = 'divbackimg2'><img src = 'src/test2.png' class = 'backimg'/></div>";
-		document.getElementById("divshow").innerHTML += "<div id = 'divbackimg3' class = 'divbackimg3'><img src = 'src/test3.png' class = 'backimg'/></div>";
-		m_loop = setInterval("uptheshow()",timedelay);
-		m_loop2 =setInterval("changebackimg()",300);
+		if(document.readyState == "complete"){
+			clearInterval(m_loop4);
+			document.getElementById("box3").innerHTML+= "<div id = 'divshow' class = 'divshow'><div id = 'divshowimg' class = 'divshowimg'><img src = 'src/chengjiu/07.jpg' class = 'achieveimg2'/></div></div>";
+			document.getElementById("box3").innerHTML+= "<div id = 'divword' class = 'divword'><p class = 'test6'>获得成就：小花花</p></div>"
+			document.getElementById("divshow").innerHTML += "<div id = 'divbackimg1' class = 'divbackimg1'><img src = 'src/test1.png' class = 'backimg'/></div>";
+			document.getElementById("divshow").innerHTML += "<div id = 'divbackimg2' class = 'divbackimg2'><img src = 'src/test2.png' class = 'backimg'/></div>";
+			document.getElementById("divshow").innerHTML += "<div id = 'divbackimg3' class = 'divbackimg3'><img src = 'src/test3.png' class = 'backimg'/></div>";
+			m_loop = setInterval("uptheshow()",timedelay);
+			m_loop2 =setInterval("changebackimg()",300);
+		}
 	}
-	showachievement();
+	
 	function uptheshow(){
 		temp-= 2;
 		if (temp < 20){
@@ -503,5 +507,7 @@
 			clearInterval(m_loop2);
 		}
 	}
+	m_loop4 = setInterval("showachievement()",timedelay);
+	
 </script>
 

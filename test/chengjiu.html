@@ -556,12 +556,12 @@
 	function worddisappear(){
 		temp+=2.5;
 		if (temp >= 100){
-			document.getElementById('divshow').remove();
+			$("#divshow").remove();
 			temp = 94;
 			clearInterval(m_loop2);
 			clearInterval(m_loop7);
-			document.getElementById('divword').remove();
-			document.getElementById('divlight').remove();
+			$("#divword").remove();
+			$("#divlight").remove();
 			return;
 		}
 		document.getElementById('divshow').style.opacity = 1 - temp/100;

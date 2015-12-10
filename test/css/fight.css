@@ -52,18 +52,20 @@ overflow-x:hidden;
 border:solid 1px;
 }
 #lefttext{
-width:50%;
+width:48%;
 height:100%;
 position:relative;
 top:0%;
 left:0%;
+overflow:hidden;
 }
 #righttext{
-width:50%;
+width:48%;
 height:100%;
 position:relative;
 top:-100%;
 left:50%;
+overflow:hidden;
 }
 #leftblood{
 width:48%;

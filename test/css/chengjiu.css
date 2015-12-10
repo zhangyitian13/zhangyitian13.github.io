@@ -3,6 +3,7 @@ height: 100%;
 }
 body{
 height: 96%;
+position: relative;
 overflow:hidden;
 }
 .bigcontainer{

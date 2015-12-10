@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" >
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+		<title>展示页面</title>
+		<script language="JavaScript" src="js/jquery.js">
+		</script>
+		<link rel="stylesheet" href="css/fight.css">
+		<link rel="stylesheet" href="css/bar.css">
+	</head>
+	<body>
+		<div class = "bigcontainer">
+			<div id = "box1">
+				<div id = "boxdiv1">
+					<div id = "head1">
+						<img id = "lefthead1" src = "src/jiangbei.jpg" class = "headimg">
+						<img id = "lefthead2" src = "src/fanhui.jpg" class = "headimg">
+						<img id = "lefthead3" src = "src/test.jpg" class = "headimg">
+					</div>
+					<div id = "vsbar">
+						<img src = "src/vs.jpg " class = "vsimg"/>
+					</div>
+					<div id = "head2">
+						<img id = "righthead1" src = "src/jiangbei.jpg" class = "headimg">
+						<img id = "righthead2" src = "src/fanhui.jpg" class = "headimg">
+						<img id = "righthead3" src = "src/test.jpg" class = "headimg">
+					</div>
+				</div>
+				
+				<div id = "boxdiv2">
+					<div id = "leftblood">
+						<div class="progress">
+							<span class="progress-val">84%</span>
+							<span class="progress-bar"><span class="progress-in" style="width: 84%"></span></span>
+						</div>
+					</div>
+					<div id = "rightblood">
+						<div class="progress">
+							<span class="progress-val">84%</span>
+							<span class="progress-bar"><span class="progress-in" style="width: 84%"></span></span>
+						</div>
+					</div>
+				</div>
+				<div id = "boxdiv3">
+					<div id = "lefttext">
+						<p class = "test1">攻：100</p>
+						<p class = "test1">防：100</p>
+						<p class = "test1">敏：100</p>
+						<p class = "test1">速：100</p>
+						<p class = "test1">暴：100</p>
+					</div>
+					<div id = "righttext">
+						<p class = "test1">攻：100</p>
+						<p class = "test1">防：100</p>
+						<p class = "test1">敏：100</p>
+						<p class = "test1">速：100</p>
+						<p class = "test1">暴：100</p>
+					</div>
+				</div>
+			</div>
+			
+			<div id = "box2">
+				
+			</div>
+		
+			<div id = "box3">
+				
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	function changehead(a,b){//a = 0 左边，a = 1 右边，b = 1,2,3表示3种不同的头像
+		var str;
+		if (a == 0 || a == 1){
+			if (a == 0)
+				str = "left";
+			else if (a == 1)
+				str = "right";
+			if (b == 1 || b == 2 || b == 3){
+				document.getElementById(str+"head1").style.display = "none";
+				document.getElementById(str+"head2").style.display = "none";
+				document.getElementById(str+"head3").style.display = "none";
+				document.getElementById(str+"head"+b).style.display = "block";
+			}
+		}
+	}
+	changehead(0,1);
+	changehead(1,2);
+</script>

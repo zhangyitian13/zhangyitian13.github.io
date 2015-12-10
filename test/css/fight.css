@@ -48,7 +48,7 @@ border:solid 1px;
 #boxdiv3{
 width:99%;
 height:45%;
-overflow:hidden;
+overflow-x:hidden;
 border:solid 1px;
 }
 #lefttext{

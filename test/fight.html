@@ -15,7 +15,7 @@
 				<div id = "boxdiv1">
 					<div id = "head1">
 						<img id = "lefthead1" src = "src/left1.png" class = "headimg">
-						<img id = "lefthead2" src = "src/left2.png class = "headimg">
+						<img id = "lefthead2" src = "src/left2.png" class = "headimg">
 						<img id = "lefthead3" src = "src/left3.png" class = "headimg">
 						<img id = "lefthead4" src = "src/left4.png" class = "headimg">
 					</div>
@@ -73,6 +73,8 @@
 	</body>
 </html>
 <script>
+var obj1 = {name:'猪A',attack:'100',defense:'100',miss:'100',speed:'100',strike:'100',blood:'80'};
+var obj2 = {name:'牛B',attack:'100',defense:'100',miss:'100',speed:'100',strike:'100',blood:'99'};
 	function changehead(a,b){//a = 0 左边，a = 1 右边，b = 1,2,3表示3种不同的头像
 		var str;
 		if (a == 0 || a == 1){
@@ -90,4 +92,20 @@
 	}
 	changehead(0,1);
 	changehead(1,2);
+	function load(obj,mode){
+		var str;
+		var str2;
+		str = "<p class = 'test1'>名："+obj.name+"</p><p class = 'test1'>攻："+obj.attack+"</p><p class = 'test1'>防："+obj.defense+"</p><p class = 'test1'>闪："+obj.miss+"</p><p class = 'test1'>速："+obj.speed+"</p><p class = 'test1'>暴："+obj.strike+"</p>";
+		if (mode == 0 || mode == 1){
+			if (mode == 0)
+				str2 = "left";
+			else if (mode == 1)
+				str2 = "right";
+			document.getElementById(str2+"text").innerHTML = "";
+			document.getElementById(str2+"text").innerHTML = str;
+			str = "<div class='progress'><span class='progress-val'>"+obj.blood+"%</span><span class='progress-bar'><span class='progress-in' style='width: "+obj.blood+"%'></span></span></div>";
+			document.getElementById(str2+"blood").innerHTML = "";
+			document.getElementById(str2+"blood").innerHTML = str;
+		}//left info
+	}
 </script>

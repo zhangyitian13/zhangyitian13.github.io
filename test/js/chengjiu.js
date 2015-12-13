@@ -11,7 +11,7 @@
 	var temp2 = 0;
 	var objshow;
 	var num;
-	var obj1 = [{imgsrc:'src/shu.jpg',achievename:'外星飞机王',achievetext:'持续撸管4小时',isnew:'0'},{imgsrc:'src/shu.jpg',achievename:'外星飞机霸',achievetext:'持续撸管8小时',isnew:'0'},{imgsrc:'src/chengjiu/01.jpg',achievename:'外星飞机帝',achievetext:'持续撸管10小时',isnew:'-1'},{imgsrc:'src/chengjiu/07.jpg',achievename:'小花花',achievetext:'蜀都赋离开范德萨',isnew:'1'},{imgsrc:'src/shu.jpg',achievename:'外星飞机帝',achievetext:'持续撸管12小时',isnew:'0'},{imgsrc:'src/jiangbei.jpg',achievename:'萌杰',achievetext:'撸出血',isnew:'1'}]
+	var obj1 = [{imgsrc:'src/shu.jpg',achievename:'外星飞机王',achievetext:'持续撸管4小时',isnew:'0'},{imgsrc:'src/shu.jpg',achievename:'外星飞机霸',achievetext:'持续撸管8小时',isnew:'0'},{imgsrc:'src/chengjiu/01.jpg',achievename:'外星飞机帝',achievetext:'持续撸管11小时',isnew:'-1'},{imgsrc:'src/chengjiu/07.jpg',achievename:'小花花',achievetext:'蜀都赋离开范德萨',isnew:'1'},{imgsrc:'src/shu.jpg',achievename:'外星飞机帝',achievetext:'持续撸管12小时',isnew:'0'},{imgsrc:'src/jiangbei.jpg',achievename:'萌杰',achievetext:'撸出血',isnew:'1'}]
 	var obj2 = {username:'萌杰',userlevel:'10',text1:'19/20',text2:'5/5',text3:'5/6',text4:'9/9',imgsrc:'src/tou.jpg'};
 	function mode1(){
 		document.getElementById('achieve1').style.textShadow = "1px 0 0 #FFD700, 0 1px 0 #FFD700, 0 -1px 0 #FFD700, -1px 0 0 #FFD700, 1px 0 1px #FFD700, 0 1px 1px #FFD700, 0 -1px 1px #FFD700, -1px 0 1px #FFD700";

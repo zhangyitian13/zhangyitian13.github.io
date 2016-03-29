@@ -67,7 +67,7 @@
 			</div>
 		
 			<div id = "box3">
-				
+				mengjiesb
 			</div>
 		</div>
 	</body>
@@ -107,5 +107,17 @@ var obj2 = {name:'牛B',attack:'100',defense:'100',miss:'100',speed:'100',strike
 			document.getElementById(str2+"blood").innerHTML = "";
 			document.getElementById(str2+"blood").innerHTML = str;
 		}//left info
+	}
+	function cleandiv(){
+		document.getElementById('box3').innerHTML = "";
+	}
+	function showresult(i){
+		var str;
+		if (i == 0)
+			str = "src/win.jpg";
+		else if (i == 1)
+			str = "src/lose.jpg"
+		cleandiv();
+		document.getElementById('box3').innerHTML = "<img src = "+str+" style = 'width:100%;height:100%'></img>";
 	}
 </script>

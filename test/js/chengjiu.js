@@ -60,8 +60,9 @@
 				$('#box3').append(str);
 			}
 			else{
+				json[i].imgsrc = getgrey(json[i].imgsrc);
 				str = "<div class = 'divchengjiu'><div class = 'divchengjiuimg'><img src = "+json[i].imgsrc
-				+" class = 'achieveimggrey'/></div><div class = 'div_text_1'><p class = 'test4'>"+json[i].achievename
+				+" class = 'achieveimg'/></div><div class = 'div_text_1'><p class = 'test4'>"+json[i].achievename
 				+"</p></div><div class = 'div_text_2'><p class = 'test5'>"+json[i].achievetext+"</p></div></div>";
 				$('#box3').append(str);
 			}
@@ -253,3 +254,8 @@
 		}
 	}
 	setTimeout("getmode1(obj1)",3000);
+	function getgrey(str){
+		var a;
+		a = str.replace(".jpg", "_g.jpg");
+		return a;
+	}

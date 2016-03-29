@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>简易游戏修改器制作</title>
+<style type="text/css">
+<!--
+.STYLE2 {font-size: 30px}
+.STYLE6 {font-size: 48px}
+.STYLE7 {font-size: 18px}
+.STYLE8 {font-size: 20px}
+a:link {
+text-decoration: none;
+}
+a:visited {
+text-decoration: none;
+}
+a:hover {
+text-decoration: none;
+}
+a:active {
+text-decoration: none;
+}
+-->
+</style>
+</head>
+
+<body bgcolor="#BBCED4">
+<div align="center">
+  <p>&nbsp;</p>
+  <table width="900" height="300" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="450"><img src="image/1.jpg" alt="头像太帅无法显示？" width="376" height="300" align="left" /></td>
+      <td width="444"><p align="left" class="STYLE2">If I hurt you，that's not what I wanted.</p>
+        <p align="left" class="STYLE2">&nbsp;</p>
+        <p align="left" class="STYLE2">&nbsp;</p>
+        <p align="left" class="STYLE2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="rizhi.html">返回列表</a></p>
+      </td>
+    </tr>
+  </table>
+  <table width="900" height="50" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <table width="900" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td class="STYLE6"><p align="left"> 简易游戏修改器制作：</p>
+      <p align="left" class="STYLE8">&nbsp;&nbsp;先介绍一下游戏： Heavy Weapon Deluxe
+
+这是一款由Popcap出品的非常出色的街机风格的打飞机游戏，画面精美，操作感强。玩家用鼠标控制一辆坦克，在前进的过程中消灭敌人，完成任务后有丰富的奖励。</p>
+<img src="image/5.jpg" alt="无法显示？" width="376" height="300" />
+      <p align="left" class="STYLE8">&nbsp;&nbsp;1984年，某个叫Red Star的国家突然发动全球的袭击，盟军抵挡不住了，派出了秘密武器Atomic Tank。游戏的政治色彩非常浓厚，甚至可以看见疑似斯大林头像和列宁的雕像。
+</p>
+<img src="image/6.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;游戏画面壮丽，战斗激烈
+</p>
+<img src="image/7.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;然而，难度却很大，即使是在任务模式，你也只有3条命，又没有“上上下下左右左右baba”，最终难逃一死。</p>
+<img src="image/8.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;应该写一个外挂了
+</p>
+<img src="image/9.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;打开cheat Engine，非常实用的工具，因为可以有多种方式扫描内存，能帮助你迅速找到一些变量。</p>
+<img src="image/10.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;左上角的5344700是分数信息，旁边的两辆坦克标志告诉你还有2条命，我们可以直接搜索精确数值=5344700的DWORD值，因为其他值的重复命中的概率会很小。</p>
+<img src="image/11.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;果然只有两个地址
+</p>
+<img src="image/12.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;我把上一个地址的数值改成12345678以后进了游戏
+</p>
+<img src="image/13.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;分数发生了改变，所以0056BAFC就是分数的地址，不过我们要改的是血，不是分数，血的信息应该存在0056BAFC附近。
+</p>
+<img src="image/14.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;于是我自杀了两次，搜索减少的数值，结果如上图所示，显然0056BB04是我们要的结果。因为他靠近刚才搜到的分数的地址（他们都应该是存在栈里的），而且当我把他改成2的时候，返回游戏时真的多了两条命，嘿嘿嘿。
+</p>
+<img src="image/15.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;怎么修改呢？可以直接用（"Heavy Weapon Deluxe.exe"+16BB04） = 2；然后搞个轮询或者键盘响应比如按空格变成2条命或者每隔一秒设置成2条命
+
+不是很好，轮询浪费资源，而且万一一秒钟就死了2次怎么办？这种方式也有其他的问题"Heavy Weapon Deluxe.exe"+16BB04不一定每次都存这个变量。在面向对象的游戏里，大多数变量都在堆里，这么寻址只能找栈里的变量，而且比如你在进了别的界面的时候（函数）修改了这个地址的值，那你可能就修改了其他的变量的值了，经常造成的结果是什么都没发生和程序崩溃。
+
+不过，我们可以改内存里的代码段，每次被打死的时候，肯定有个函数会把你的血量-1，我们可以改成不动，这样就变成无限血了，而且代码段在游戏开始的时候就加载进去了，位置比较固定。
+</p>
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;右键，“找出是什么改写了这个地址”，是空的，因为你还没有改写这个地址。
+</p>
+<img src="image/16.jpg" alt="无法显示？" width="376" height="300" />
+<img src="image/17.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;很简单，进入游戏，自杀一次就行了
+</p>
+<img src="image/18.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;
+<br>&nbsp;&nbsp;0041B85F - C3 - ret </br>
+<br>&nbsp;&nbsp;0041B860 - 49 - dec ecx</br>
+<br>&nbsp;&nbsp;0041B861 - 89 88 64090000  - mov [eax+00000964],ecx <<</br>
+<br>&nbsp;&nbsp;0041B867 - 89 9E 80000000  - mov [esi+00000080],ebx</br>
+<br>&nbsp;&nbsp;0041B86D - EB 3B - jmp Heavy Weapon Deluxe.exe+1B8AA</br>
+
+<br>&nbsp;&nbsp;显然，mov [eax+00000964],ecx是把血存入内存，ecx是当前的血，所以0041B860的指令 dec ecx就是被打死以后减一血，那我们把它改成nop（90），返回游戏。</br></p>
+<img src="image/19.jpg" alt="无法显示？" width="376" height="300" />	  
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;果然，死了不扣血了，连死了3次都没扣血，我情不自禁地露出了邪恶的笑容
+</p>
+<img src="image/20.jpg" alt="无法显示？" width="376" height="300" />
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;修改成功！关掉了游戏重复上面的过程，发现代码段的位置并没有改变，现在只要打开very slow studio写一个脚本就可以了。</p>
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;
+	<br>&nbsp;&nbsp;TCHAR str[] = _T("Heavy Weapon Deluxe.exe");</br>
+	<br>&nbsp;&nbsp;HANDLE hProcess = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);    //建立进程快照</br>
+	<br>&nbsp;&nbsp;HANDLE hp;</br>
+	<br>&nbsp;&nbsp;char dst[2];</br>
+	<br>&nbsp;&nbsp;dst[0] = 0x90;</br>
+	<br>&nbsp;&nbsp;int *a;</br>
+    <br>&nbsp;&nbsp;</br>
+    <br>&nbsp;&nbsp;if (INVALID_HANDLE_VALUE == hProcess)</br>
+    <br>&nbsp;&nbsp;{</br>
+    <br>&nbsp;&nbsp;    printf("获取进程信息失败！！！\n");</br>
+    <br>&nbsp;&nbsp;    return FALSE;</br>
+    <br>&nbsp;&nbsp;}</br>
+    <br>&nbsp;&nbsp;</br>
+    <br>&nbsp;&nbsp;//成功获取进程信息</br>
+    <br>&nbsp;&nbsp;PROCESSENTRY32 pe32;</br>
+    <br>&nbsp;&nbsp;pe32.dwSize = sizeof(PROCESSENTRY32);</br>
+    <br>&nbsp;&nbsp;</br>
+    <br>&nbsp;&nbsp;BOOL moreProc = Process32First(hProcess, &pe32);</br>
+	<br>&nbsp;&nbsp;while (moreProc)   //枚举所有进程</br>
+    <br>&nbsp;&nbsp;{</br>
+    <br>&nbsp;&nbsp;    //_tprintf(_T("进程名称：%s\n"), pe32.szExeFile);</br>
+	<br>&nbsp;&nbsp;	if (wcscmp(pe32.szExeFile,str) == 0)</br>
+	<br>&nbsp;&nbsp;	{</br>
+	<br>&nbsp;&nbsp;		HMODULE hModule = fnGetProcessBase(pe32.th32ProcessID);</br>
+	<br>&nbsp;&nbsp;		printf("%X",hModule);</br>
+	<br>&nbsp;&nbsp;		//a = (int *)0x0041B860;</br>
+	<br>&nbsp;&nbsp;		//printf("%d",*a);</br>
+	<br>&nbsp;&nbsp;		hp = OpenProcess( PROCESS_ALL_ACCESS, FALSE,pe32.th32ProcessID);</br>
+	<br>&nbsp;&nbsp;		WriteProcessMemory(hp,(HMODULE)((int)hModule+0x1B860),dst,1,NULL);</br>
+	<br>&nbsp;&nbsp;		ReadProcessMemory(hp,(HMODULE)((int)hModule+0x1B860),dst,1,NULL);</br>
+    <br>&nbsp;&nbsp;</br>
+	<br>&nbsp;&nbsp;	}</br>
+    <br>&nbsp;&nbsp;    moreProc = Process32Next(hProcess, &pe32);</br>
+    <br>&nbsp;&nbsp;}</br>
+    <br>&nbsp;&nbsp;</br>
+    <br>&nbsp;&nbsp;CloseHandle(hProcess);        //释放进程快照</br>
+	<br>&nbsp;&nbsp;getchar();</br>
+    <br>&nbsp;&nbsp;return TRUE;</br>
+	<br>&nbsp;&nbsp;大概意思就是找到叫Heavy Weapon Deluxe.exe的进程，然后把Heavy Weapon Deluxe.exe+0x1B860第一个字节从49（dec ecx）改成90（nop）。玩的时候不开修改器就是正常玩（3条命的那种），打开修改器后，就可以无限命玩了。</br>
+
+
+</p>
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;也许你想要进行一些更复杂的操作也没有问题，你可以把你要修改的地方的操作码改成jmp somewhere，somewhere是你的作弊器的进程的内存的某处，
+	  然后你在作弊器进程里存一些你想做的操作码到内存里，在jmp回去。如果你喜欢图形界面，你也可以自己写一个图形界面。</p>
+	  <p align="left" class="STYLE8">&nbsp;&nbsp;这游戏原来有19关，我之前一般只能打到5到6关，展示一下最终的老怪</p>
+	  
+	  <img src="image/21.jpg" alt="无法显示？" width="376" height="300" />
+      </td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>
+</body>
+</html>
